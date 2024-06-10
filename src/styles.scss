@@ -1,1 +1,110 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$books-primary: mat.define-palette(mat.$indigo-palette);
+$books-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$books-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$books-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $books-primary,
+      accent: $books-accent,
+      warn: $books-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($books-theme);
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("./assets/fonts/quicksand/Quicksand-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Quicksand-Medium";
+  src: url("./assets/fonts/quicksand/Quicksand-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Quicksand-SemiBold";
+  src: url("./assets/fonts/quicksand/Quicksand-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: "Quicksand-Bold";
+  src: url("./assets/fonts/quicksand/Quicksand-Bold.ttf");
+}
+
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Quicksand;
+}
+
+h3 {
+  font-size: 32px;
+  font-family: Quicksand-Bold;
+}
+
+h4 {
+  font-size: 24px;
+}
+
+mat-label {
+  font-family: "Quicksand-SemiBold";
+  font-size: 14px;
+
+  color: #090937;
+}
+
+.btn-primary {
+  color: white !important;
+  background-color: #f66e5e !important;
+}
+
+.btn-outline-primary {
+  color: #f66e5e !important;
+  border: 1px solid #f66e5e !important;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 10px;
+}
+
+.mat-mdc-form-field {
+  height: 50px !important;
+
+  margin-bottom: 5px;
+}
+
+// ::ng-deep .mat-mdc-text-field-wrapper .mat-mdc-form-field-infix {
+//   min-height: unset !important;
+// }
