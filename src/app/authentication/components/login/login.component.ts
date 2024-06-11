@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AuthService } from '../../services/auth.service';
 
 import { AuthValidations } from '../../validations/auth-validations';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -21,17 +23,24 @@ export class LoginComponent {
     ]),
   });
 
-  constructor(private _auth: AuthService, private _snackBar: MatSnackBar) {}
+  constructor(
+    private _auth: AuthService,
+    private _snackBar: MatSnackBar,
+    private route: Router
+  ) {}
 
   submitLogin(): void {
     this.loginForm.markAllAsTouched();
 
     if (this.loginForm.valid) {
       this._auth.login(this.loginForm.value).subscribe({
-        next: () =>
+        next: () => {
           this._snackBar.open('Successfully login', 'close', {
             duration: 3000,
-          }),
+          });
+
+          this.route.navigateByUrl('customer');
+        },
       });
     }
   }

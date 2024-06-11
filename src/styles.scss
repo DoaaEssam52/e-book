@@ -34,27 +34,10 @@ $books-theme: mat.define-light-theme(
 // that you are using.
 @include mat.all-component-themes($books-theme);
 
-@font-face {
-  font-family: "Quicksand";
-  src: url("./assets/fonts/quicksand/Quicksand-Regular.ttf");
-}
-
-@font-face {
-  font-family: "Quicksand-Medium";
-  src: url("./assets/fonts/quicksand/Quicksand-Medium.ttf");
-}
-
-@font-face {
-  font-family: "Quicksand-SemiBold";
-  src: url("./assets/fonts/quicksand/Quicksand-SemiBold.ttf");
-}
-
-@font-face {
-  font-family: "Quicksand-Bold";
-  src: url("./assets/fonts/quicksand/Quicksand-Bold.ttf");
-}
-
 /* You can add global styles to this file, and also import other style files */
+@import "./assets/styles/fonts.scss";
+@import "./assets/styles/buttons.scss";
+@import "./assets/styles/forms.scss";
 
 html,
 body {
@@ -66,6 +49,11 @@ body {
   font-family: Quicksand;
 }
 
+h1 {
+  font-size: 67px;
+  font-family: Fanwood;
+}
+
 h3 {
   font-size: 32px;
   font-family: Quicksand-Bold;
@@ -75,6 +63,20 @@ h4 {
   font-size: 24px;
 }
 
+h6 {
+  color: rgba(0, 0, 0, 0.34);
+
+  font-size: 15px;
+  font-family: Fanwood;
+  font-weight: 900;
+
+  text-transform: uppercase;
+}
+
+p {
+  color: #7a7a7a;
+}
+
 mat-label {
   font-family: "Quicksand-SemiBold";
   font-size: 14px;
@@ -82,29 +84,6 @@ mat-label {
   color: #090937;
 }
 
-.btn-primary {
-  color: white !important;
-  background-color: #f66e5e !important;
-}
-
-.btn-outline-primary {
+.text-primary {
   color: #f66e5e !important;
-  border: 1px solid #f66e5e !important;
 }
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-
-  margin-bottom: 10px;
-}
-
-.mat-mdc-form-field {
-  height: 50px !important;
-
-  margin-bottom: 5px;
-}
-
-// ::ng-deep .mat-mdc-text-field-wrapper .mat-mdc-form-field-infix {
-//   min-height: unset !important;
-// }

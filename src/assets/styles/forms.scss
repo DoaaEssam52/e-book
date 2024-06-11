@@ -1,0 +1,12 @@
+.form-group {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 10px;
+}
+
+.mat-mdc-form-field {
+  height: 50px !important;
+
+  margin-bottom: 5px;
+}
