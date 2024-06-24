@@ -33,4 +33,11 @@ export class AuthService {
       form
     );
   }
+
+  resetPassword(form: any): Observable<any> {
+    return this._httpClient.post(
+      `${this.authBaseUrl}/${environment.resetPassword}`,
+      form
+    );
+  }
 }

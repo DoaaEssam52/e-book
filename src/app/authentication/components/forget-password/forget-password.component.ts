@@ -6,8 +6,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AuthService } from '../../services/auth.service';
 
-import { AuthValidations } from '../../validations/auth-validations';
-
 @Component({
   selector: 'app-forget-password',
   templateUrl: './forget-password.component.html',

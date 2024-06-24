@@ -3,4 +3,5 @@ export const environment = {
   login: 'login',
   register: 'register',
   forgetPassword: 'forgot-password',
+  resetPassword: 'reset-password',
 };

@@ -11,4 +11,7 @@ export const AuthValidations = {
     minLength: 3,
     maxLength: 20,
   },
+  otp: {
+    pattern: '[0-9]+',
+  },
 };
