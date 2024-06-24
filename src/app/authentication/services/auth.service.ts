@@ -22,7 +22,14 @@ export class AuthService {
 
   register(form: any): Observable<any> {
     return this._httpClient.post(
-      `${this.authBaseUrl}//${environment.register}`,
+      `${this.authBaseUrl}/${environment.register}`,
+      form
+    );
+  }
+
+  forgetPassword(form: any): Observable<any> {
+    return this._httpClient.post(
+      `${this.authBaseUrl}/${environment.forgetPassword}`,
       form
     );
   }

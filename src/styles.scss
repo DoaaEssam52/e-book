@@ -77,6 +77,10 @@ p {
   color: #7a7a7a;
 }
 
+a {
+  cursor: pointer;
+}
+
 mat-label {
   font-family: "Quicksand-SemiBold";
   font-size: 14px;
@@ -86,4 +90,8 @@ mat-label {
 
 .text-primary {
   color: #f66e5e !important;
+}
+
+.family-lora {
+  font-family: "Lora" !important;
 }

@@ -5,6 +5,7 @@ import { AuthService } from '../../services/auth.service';
 
 import { AuthValidations } from '../../validations/auth-validations';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -32,14 +33,18 @@ export class RegisterComponent {
     role: new FormControl('', Validators.required),
   });
 
-  constructor(private _auth: AuthService, private _snackBar: MatSnackBar) {}
+  constructor(
+    private _auth: AuthService,
+    private _snackBar: MatSnackBar,
+    private route: Router
+  ) {}
 
   submitRegister(): void {
     this.registerForm.markAllAsTouched();
 
     if (this.registerForm.valid) {
       this._auth.register(this.registerForm.value).subscribe({
-        next: () =>
+        next: () => {
           this._snackBar.open(
             'You have successfully created a new account',
             'close',
@@ -47,6 +52,8 @@ export class RegisterComponent {
               duration: 3000,
             }
           ),
+            this.route.navigateByUrl('customer');
+        },
       });
     }
   }

@@ -17,8 +17,10 @@ import {
 import { ImgPathPipe } from './pipes/img-path.pipe';
 import { ErrorMessagesPipe } from './pipes/error-messages.pipe';
 
+import { NavbarComponent } from './components/navbar/navbar.component';
+
 @NgModule({
-  declarations: [ImgPathPipe, ErrorMessagesPipe],
+  declarations: [ImgPathPipe, ErrorMessagesPipe, NavbarComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -41,6 +43,7 @@ import { ErrorMessagesPipe } from './pipes/error-messages.pipe';
     MatToolbarModule,
     ImgPathPipe,
     ErrorMessagesPipe,
+    NavbarComponent,
   ],
   providers: [
     {
