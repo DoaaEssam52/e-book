@@ -1,0 +1,49 @@
+<div class="new-books">
+  <div class="py-5 text-center">
+    <img src="../../../../../assets/images/leaf_2.png" width="140" />
+    <h3 class="mt-3 mb-4 family-lora">
+      "Every day is a journey and the journey itself is home."
+    </h3>
+    <h6>MATSU BASHIO</h6>
+  </div>
+
+  <div class="my-5 px-4 row mx-0">
+    <div class="col-md-7">
+      <div class="row mx-0">
+        <div class="col-md-4" *ngFor="let book of newBooks">
+          <mat-card class="book-simple-card">
+            <img
+              mat-card-image
+              [src]="book.imgSrc"
+              alt="Photo of a Shiba Inu"
+            />
+
+            <mat-card-content align="center">
+              <mat-card-title class="my-2">{{ book.name }}</mat-card-title>
+              <mat-card-subtitle class="my-2 text-primary"
+                >${{ book.price }}</mat-card-subtitle
+              >
+
+              <a>Add To Cart</a>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-5 px-5">
+      <mat-label> Hand Picked Additions.</mat-label>
+      <h2 class="mt-3 mb-5">
+        Newest Books in <br />
+        Our Library
+      </h2>
+      <p>
+        Its a neighborly day in this beautywood a neighborly day for a beauty.
+        Would you be mine? Could you be mine. So get a witch’s shawl on a
+        broomstick you can crawl on. Were gonna pay a call on the Addams Family?
+        Michael Knight a young loner on a crusade to champion the cause of the
+        innocent.
+      </p>
+    </div>
+  </div>
+</div>

@@ -6,14 +6,14 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () =>
-      import('./authentication/authentication.module').then(
+      import('./modules/authentication/authentication.module').then(
         (m) => m.AuthenticationModule
       ),
   },
   {
-    path: 'customer',
+    path: 'landing',
     loadChildren: () =>
-      import('./customer/customer.module').then((m) => m.CustomerModule),
+      import('./modules/landing/landing.module').then((m) => m.LandingModule),
   },
 ];
 

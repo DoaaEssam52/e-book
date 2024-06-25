@@ -54,6 +54,11 @@ h1 {
   font-family: Fanwood;
 }
 
+h2 {
+  font-size: 42px;
+  font-family: Fanwood;
+}
+
 h3 {
   font-size: 32px;
   font-family: Quicksand-Bold;
@@ -75,6 +80,8 @@ h6 {
 
 p {
   color: #7a7a7a;
+
+  line-height: 1.6rem;
 }
 
 a {
@@ -86,6 +93,13 @@ mat-label {
   font-size: 14px;
 
   color: #090937;
+}
+
+.mat-mdc-card-title {
+  font-family: "Quicksand-Bold" !important;
+  font-weight: 700 !important;
+
+  color: #7a7a7a;
 }
 
 .text-primary {

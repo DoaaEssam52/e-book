@@ -1,0 +1,16 @@
+<div class="my-5">
+  <h2 class="mb-5 text-center">Explore Our Top Categories</h2>
+
+  <div class="px-5 row mx-0">
+    <mat-card
+      class="col-md-4 bg-transparent border-0"
+      appearance="outlined"
+      *ngFor="let category of categories"
+    >
+      <img mat-card-image [src]="category.imgSrc" alt="Photo of a Shiba Inu" />
+      <mat-card-content align="center">
+        <p>{{ category.name }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

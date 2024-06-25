@@ -1,0 +1,30 @@
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  color: white;
+  background-color: transparent;
+
+  &__logo {
+    font-size: 45px;
+    font-family: Fanwood-Italic;
+    font-weight: 500;
+
+    color: #9ea061;
+  }
+
+  &__routes {
+    button {
+      font-size: 17px;
+
+      font-weight: 600;
+    }
+  }
+}
+
+.active {
+  background-color: antiquewhite;
+}
