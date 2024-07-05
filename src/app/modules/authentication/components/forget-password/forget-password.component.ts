@@ -6,6 +6,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AuthService } from '../../services/auth.service';
 
+import { ForgetPassword } from '../../models/forget-password-model';
+
 @Component({
   selector: 'app-forget-password',
   templateUrl: './forget-password.component.html',
@@ -26,27 +28,26 @@ export class ForgetPasswordComponent {
     this.forgetPasswordForm.markAllAsTouched();
 
     if (this.forgetPasswordForm.valid) {
-      this._auth.forgetPassword(this.forgetPasswordForm.value).subscribe({
-        next: () => {
-          console.log('d5lll');
-          this.route.navigateByUrl('/auth/reset-password');
-        },
-        error: (error) => {
-          const errorMessages = error.message
-            ? [error.message]
-            : error.error?.message
-            ? error.error?.message
-            : [];
+      this._auth
+        .forgetPassword(this.forgetPasswordForm.value as ForgetPassword)
+        .subscribe({
+          next: () => {
+            this.route.navigateByUrl('/auth/reset-password');
+          },
+          error: (error) => {
+            const errorMessages = error.message
+              ? [error.message]
+              : error.error?.message
+              ? error.error?.message
+              : [];
 
-          console.log('errorMessages', errorMessages);
-
-          errorMessages.forEach((msg: string) => {
-            this._snackBar.open(msg, 'close', {
-              duration: 3000,
+            errorMessages.forEach((msg: string) => {
+              this._snackBar.open(msg, 'close', {
+                duration: 3000,
+              });
             });
-          });
-        },
-      });
+          },
+        });
     }
   }
 }

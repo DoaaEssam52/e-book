@@ -8,6 +8,8 @@ import { AuthService } from '../../services/auth.service';
 
 import { AuthValidations } from '../../validations/auth-validations';
 
+import { ResetPassword } from '../../models/reset-password-model';
+
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
@@ -37,30 +39,30 @@ export class ResetPasswordComponent {
     this.resetPasswordForm.markAllAsTouched();
 
     if (this.resetPasswordForm.valid) {
-      this._auth.resetPassword(this.resetPasswordForm.value).subscribe({
-        next: () => {
-          this._snackBar.open('Password is rested successfully', 'close', {
-            duration: 3000,
-          });
-
-          this.route.navigateByUrl('landing');
-        },
-        error: (error) => {
-          const errorMessages = error.message
-            ? [error.message]
-            : error.error?.message
-            ? error.error?.message
-            : [];
-
-          console.log('errorMessages', errorMessages);
-
-          errorMessages.forEach((msg: string) => {
-            this._snackBar.open(msg, 'close', {
+      this._auth
+        .resetPassword(this.resetPasswordForm.value as ResetPassword)
+        .subscribe({
+          next: () => {
+            this._snackBar.open('Password is rested successfully', 'close', {
               duration: 3000,
             });
-          });
-        },
-      });
+
+            this.route.navigateByUrl('home');
+          },
+          error: (error) => {
+            const errorMessages = error.message
+              ? [error.message]
+              : error.error?.message
+              ? error.error?.message
+              : [];
+
+            errorMessages.forEach((msg: string) => {
+              this._snackBar.open(msg, 'close', {
+                duration: 3000,
+              });
+            });
+          },
+        });
     }
   }
 }

@@ -11,22 +11,10 @@
     <div class="col-md-7">
       <div class="row mx-0">
         <div class="col-md-4" *ngFor="let book of newBooks">
-          <mat-card class="book-simple-card">
-            <img
-              mat-card-image
-              [src]="book.imgSrc"
-              alt="Photo of a Shiba Inu"
-            />
-
-            <mat-card-content align="center">
-              <mat-card-title class="my-2">{{ book.name }}</mat-card-title>
-              <mat-card-subtitle class="my-2 text-primary"
-                >${{ book.price }}</mat-card-subtitle
-              >
-
-              <a>Add To Cart</a>
-            </mat-card-content>
-          </mat-card>
+          <app-book-card
+            [book]="book"
+            imgSrc="https://subsolardesigns.com/leona/wp-content/uploads/2019/04/back_home1-600x900.jpg"
+          />
         </div>
       </div>
     </div>
@@ -44,6 +32,10 @@
         Michael Knight a young loner on a crusade to champion the cause of the
         innocent.
       </p>
+
+      <button mat-button class="px-0 pb-1 underline-label" [routerLink]="'/books'">
+        View All Books
+      </button>
     </div>
   </div>
 </div>

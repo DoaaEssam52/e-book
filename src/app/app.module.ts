@@ -10,6 +10,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
 import { HttpInterceptor } from './interceptors/http.interceptor';
+import { CartReducer } from './store/reducers/cart-reducer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +19,7 @@ import { HttpInterceptor } from './interceptors/http.interceptor';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-
+    StoreModule.forRoot({ cartItems: CartReducer }, {}),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptor, multi: true },

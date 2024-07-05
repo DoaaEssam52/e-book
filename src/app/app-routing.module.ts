@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'auth', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'auth',
     loadChildren: () =>
@@ -11,9 +11,19 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'landing',
+    path: 'home',
     loadChildren: () =>
-      import('./modules/landing/landing.module').then((m) => m.LandingModule),
+      import('./modules/home/home.module').then((m) => m.HomeModule),
+  },
+  {
+    path: 'books',
+    loadChildren: () =>
+      import('./modules/books/books.module').then((m) => m.BooksModule),
+  },
+  {
+    path: 'cart',
+    loadChildren: () =>
+      import('./modules/cart/cart.module').then((m) => m.CartModule),
   },
 ];
 

@@ -1,5 +1,5 @@
 .navbar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -19,12 +19,17 @@
   &__routes {
     button {
       font-size: 17px;
-
       font-weight: 600;
+
+      &:hover {
+        color: #f66e5e;
+        background-color: transparent;
+      }
     }
   }
 }
 
-.active {
-  background-color: antiquewhite;
+.scrolledNavbar {
+  color: #484848;
+  background-color: white;
 }

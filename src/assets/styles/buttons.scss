@@ -1,9 +1,11 @@
 .btn-primary {
   color: white !important;
   background-color: #f66e5e !important;
+  border: 1px solid #f66e5e !important;
 }
 
 .btn-outline-primary {
   color: #f66e5e !important;
-  border: 1px solid #f66e5e !important;
+  background-color: transparent !important;
+  border: 2px solid #f66e5e !important;
 }

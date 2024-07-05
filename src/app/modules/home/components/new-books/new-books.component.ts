@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-import { Book } from '../../models/book.model';
+import { Book } from '../../../shared/models/book.model';
 
 @Component({
   selector: 'app-new-books',
@@ -8,24 +8,5 @@ import { Book } from '../../models/book.model';
   styleUrls: ['./new-books.component.scss'],
 })
 export class NewBooksComponent {
-  newBooks: Book[] = [
-    {
-      name: 'Book1',
-      imgSrc:
-        'https://subsolardesigns.com/leona/wp-content/uploads/2019/04/back_home1-600x900.jpg',
-      price: 12,
-    },
-    {
-      name: 'Book2',
-      imgSrc:
-        'https://subsolardesigns.com/leona/wp-content/uploads/2019/04/back_home1-600x900.jpg',
-      price: 684,
-    },
-    {
-      name: 'Book3',
-      imgSrc:
-        'https://subsolardesigns.com/leona/wp-content/uploads/2019/04/back_home1-600x900.jpg',
-      price: 1000,
-    },
-  ];
+  @Input() newBooks: Book[] = [];
 }

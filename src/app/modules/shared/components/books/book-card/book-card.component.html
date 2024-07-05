@@ -1,0 +1,12 @@
+<mat-card class="book-simple-card">
+  <img mat-card-image [src]="imgSrc" alt="Photo of a Shiba Inu" />
+
+  <mat-card-content align="center">
+    <mat-card-title class="my-2">{{ book.name }}</mat-card-title>
+    <mat-card-subtitle class="my-2 text-primary"
+      >${{ book.price }}</mat-card-subtitle
+    >
+
+    <a (click)="addToCart()">Add To Cart</a>
+  </mat-card-content>
+</mat-card>

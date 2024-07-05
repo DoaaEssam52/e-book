@@ -1,0 +1,17 @@
+<mat-toolbar id="navbar" class="px-5 py-3 navbar">
+  <mat-toolbar-row class="px-0 justify-content-between">
+    <h2 class="navbar__logo">E-Book</h2>
+
+    <div class="navbar__routes">
+      <button
+        *ngFor="let tab of navTabs"
+        mat-button
+        [routerLink]="[tab.routeTo]"
+        routerLinkActive="underline-label"
+        class="px-0 min-w-unset mx-2"
+      >
+        {{ tab.title }}
+      </button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

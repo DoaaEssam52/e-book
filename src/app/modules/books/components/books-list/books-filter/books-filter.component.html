@@ -1,0 +1,53 @@
+<form [formGroup]="filterForm">
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Price </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="row justify-content-between">
+        <div class="col-6 form-group">
+          <mat-label>Min Price</mat-label>
+          <input class="form-control" formControlName="minPrice" />
+        </div>
+        <div class="col-6 form-group">
+          <mat-label>Max Price</mat-label>
+          <input class="form-control" formControlName="maxPrice" />
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-divider></mat-divider>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Author </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-select formControlName="author" placeholder="Choose author">
+        <mat-option *ngFor="let author of authors" [value]="author">{{
+          author
+        }}</mat-option>
+      </mat-select>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-divider></mat-divider>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Category </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-select formControlName="category" placeholder="Choose author">
+        <mat-option *ngFor="let author of authors" [value]="author">{{
+          author
+        }}</mat-option>
+      </mat-select>
+    </mat-expansion-panel>
+  </mat-accordion>
+</form>
+<button mat-flat-button class="w-100 mb-2 mt-4 btn-primary" (click)="submitFilter()">
+  Filter
+</button>

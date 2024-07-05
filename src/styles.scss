@@ -84,7 +84,8 @@ p {
   line-height: 1.6rem;
 }
 
-a {
+a,
+.mat-icon {
   cursor: pointer;
 }
 
@@ -108,4 +109,21 @@ mat-label {
 
 .family-lora {
   font-family: "Lora" !important;
+}
+
+.underline-label {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    bottom: -2px;
+    left: 0;
+    width: 50px;
+    border: 1px solid #f66e5e;
+  }
+}
+
+.min-w-unset {
+  min-width: unset !important;
 }

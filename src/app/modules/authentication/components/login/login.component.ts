@@ -6,6 +6,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AuthService } from '../../services/auth.service';
 
+import { Login } from '../../models/login-model';
+
 import { AuthValidations } from '../../validations/auth-validations';
 
 @Component({
@@ -33,13 +35,15 @@ export class LoginComponent {
     this.loginForm.markAllAsTouched();
 
     if (this.loginForm.valid) {
-      this._auth.login(this.loginForm.value).subscribe({
-        next: () => {
+      this._auth.login(this.loginForm.value as Login).subscribe({
+        next: ({ data }) => {
+          localStorage.setItem('accessToken', data.accessToken);
+
           this._snackBar.open('Successfully login', 'close', {
             duration: 3000,
           });
 
-          this.route.navigateByUrl('landing');
+          this.route.navigateByUrl('home');
         },
       });
     }

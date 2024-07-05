@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BookService } from '../../../../modules/shared/services/book.service';
 
 @Component({
   selector: 'app-categories',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./categories.component.scss'],
 })
 export class CategoriesComponent {
+  constructor(private _book: BookService) {}
+
   categories = [
     {
       name: 'Higher Education',
@@ -23,4 +26,11 @@ export class CategoriesComponent {
         'https://subsolardesigns.com/leona/wp-content/uploads/2019/04/category_adventure2.jpg',
     },
   ];
+
+  ngOnInit(): void {
+    this._book.getAllCategories().subscribe({
+      next: (res) => {
+      },
+    });
+  }
 }

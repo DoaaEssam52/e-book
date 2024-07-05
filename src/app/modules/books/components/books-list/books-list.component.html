@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+
+<app-books-banner></app-books-banner>
+
+<div class="p-5">
+  <!-- <mat-label>Home - Shop</mat-label> -->
+
+  <div
+    *ngIf="isLoading; else showBooks"
+    class="d-flex justify-content-center align-items-center"
+  >
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <ng-template #showBooks>
+    <div class="row mx-0">
+      <div class="col-3">
+        <app-books-filter (filter)="filter($event)"></app-books-filter>
+      </div>
+      <div class="col-9 row mx-0">
+        <app-book-card
+          *ngFor="
+            let book of filteredBooks
+              | slice : pageIndex * pageSize : pageIndex * pageSize + pageSize
+          "
+          class="col-md-4"
+          [book]="book"
+          imgSrc="https://subsolardesigns.com/leona/wp-content/uploads/2019/04/back_home1-600x900.jpg"
+        ></app-book-card>
+      </div>
+    </div>
+
+    <app-books-list-pagination
+      [pageSize]="pageSize"
+      [length]="length"
+      (pageIndexEmitter)="getPageIndex($event)"
+    ></app-books-list-pagination>
+  </ng-template>
+</div>
