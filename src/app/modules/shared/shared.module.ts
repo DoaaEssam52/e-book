@@ -16,12 +16,16 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
-import { CarouselModule } from 'ngx-owl-carousel-o';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import {
   MAT_SNACK_BAR_DEFAULT_OPTIONS,
   MatSnackBarModule,
 } from '@angular/material/snack-bar';
+
+import { CarouselModule } from 'primeng/carousel'; // Import CarouselModule
+import { ButtonModule } from 'primeng/button'; // Import ButtonModule if you need to use buttons in the carousel
 
 import { ImgPathPipe } from './pipes/img-path.pipe';
 import { ErrorMessagesPipe } from './pipes/error-messages.pipe';
@@ -31,6 +35,8 @@ import { NavbarComponent } from './components/layout/navbar/navbar.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { BookCardComponent } from './components/books/book-card/book-card.component';
 import { CartItemCounterComponent } from './components/cart/cart-item-counter/cart-item-counter.component';
+import { SpinnerComponent } from './components/layout/spinner/spinner.component';
+import { RotatingBookComponent } from './components/books/rotating-book/rotating-book.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +47,8 @@ import { CartItemCounterComponent } from './components/cart/cart-item-counter/ca
     FooterComponent,
     BookCardComponent,
     CartItemCounterComponent,
+    SpinnerComponent,
+    RotatingBookComponent,
   ],
   imports: [
     CommonModule,
@@ -55,11 +63,14 @@ import { CartItemCounterComponent } from './components/cart/cart-item-counter/ca
     MatToolbarModule,
     MatCardModule,
     CarouselModule,
+    ButtonModule,
     MatPaginatorModule,
     MatExpansionModule,
     MatDividerModule,
     MatProgressSpinnerModule,
     MatIconModule,
+    MatMenuModule,
+    MatDialogModule,
   ],
   exports: [
     ReactiveFormsModule,
@@ -73,11 +84,14 @@ import { CartItemCounterComponent } from './components/cart/cart-item-counter/ca
     MatToolbarModule,
     MatCardModule,
     CarouselModule,
+    ButtonModule,
     MatPaginatorModule,
     MatExpansionModule,
     MatProgressSpinnerModule,
     MatDividerModule,
     MatIconModule,
+    MatMenuModule,
+    MatDialogModule,
     ImgPathPipe,
     ErrorMessagesPipe,
     FilterByKeyPipe,
@@ -85,6 +99,8 @@ import { CartItemCounterComponent } from './components/cart/cart-item-counter/ca
     FooterComponent,
     BookCardComponent,
     CartItemCounterComponent,
+    SpinnerComponent,
+    RotatingBookComponent,
   ],
   providers: [
     {

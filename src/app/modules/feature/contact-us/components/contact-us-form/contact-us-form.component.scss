@@ -1,0 +1,24 @@
+.contact-us-form {
+  .img-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: url("../../../../../../assets/images/contact-us-shadow-1.png");
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.5;
+  }
+
+  h1 {
+    font-family: Euphoria-Script;
+    font-size: 82px;
+    color: #e2a3ce;
+  }
+
+  ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: transparent !important;
+  }
+}

@@ -1,17 +1,9 @@
-<div class="d-flex justify-content-center align-items-center">
-  <button
-    class="btn btn-primary d-flex align-items-center"
-    (click)="increment()"
-  >
-    <mat-icon>add</mat-icon>
-  </button>
+<div class="d-flex align-items-center" tabindex="0">
+  <h4 class="counter__value">{{ count }}</h4>
 
-  <h5 class="mx-2 my-0">{{ count }}</h5>
+  <div class="mx-2">
+    <mat-icon class="counter__control" (click)="increment()">add</mat-icon>
 
-  <button
-    class="btn btn-primary d-flex align-items-center"
-    (click)="decrement()"
-  >
-    <mat-icon>remove</mat-icon>
-  </button>
+    <mat-icon class="counter__control" (click)="decrement()">remove</mat-icon>
+  </div>
 </div>

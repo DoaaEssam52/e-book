@@ -1,0 +1,27 @@
+
+
+img {
+  max-width: 260px;
+  min-width: 140px;
+  height: 260px;
+}
+
+ .item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  background: #4a90e2;
+  color: white;
+  font-size: 20px;
+  margin: 5px;
+}
+
+.carousel-caption {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}

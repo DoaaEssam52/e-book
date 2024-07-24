@@ -1,0 +1,221 @@
+<div class="container bg-light">
+  <div class="woocommerce">
+    <div class="woocommerce-notices-wrapper"></div>
+    <form
+      class="woocommerce-cart-form"
+      action="https://subsolardesigns.com/leona/cart/"
+      method="post"
+    >
+      <table
+        class="shop_table shop_table_responsive cart woocommerce-cart-form__contents"
+        cellspacing="0"
+      >
+        <thead>
+          <tr>
+            <th class="product-remove">&nbsp;</th>
+            <th class="product-thumbnail">&nbsp;</th>
+            <th class="product-name">Product</th>
+            <th class="product-price">Price</th>
+            <th class="product-quantity">Quantity</th>
+            <th class="product-subtotal">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            class="woocommerce-cart-form__cart-item cart_item"
+            *ngFor="let cartItem of cartItems"
+          >
+            <td class="product-remove">
+              <mat-icon class="text-primary">close</mat-icon>
+            </td>
+
+            <td class="product-thumbnail">
+              <a href="https://subsolardesigns.com/leona/product/fairy-journey/"
+                ><img
+                  src="https://subsolardesigns.com/leona/wp-content/uploads/2019/04/fairy_journey1-600x900.jpg"
+                  class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail img-fluid"
+                  alt=""
+              /></a>
+            </td>
+
+            <td data-title="Product">
+              <h5 class="product-name">
+                {{ cartItem.name }}
+              </h5>
+            </td>
+
+            <td class="product-price" data-title="Price">
+              <span class="woocommerce-Price-amount amount"
+                ><span class="woocommerce-Price-currencySymbol">£</span
+                >{{ cartItem.price }}</span
+              >
+            </td>
+
+            <td class="product-quantity" data-title="Quantity">
+              <app-cart-item-counter
+                [cartItem]="cartItem"
+                (itemPreSavedQuantity)="updatePreSavedQuantity($event)"
+              ></app-cart-item-counter>
+            </td>
+
+            <td class="product-subtotal" data-title="Total">
+              <span class="woocommerce-Price-amount amount"
+                ><span class="woocommerce-Price-currencySymbol">£</span
+                >120.00</span
+              >
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="6" class="actions text-end">
+              <button
+                type="button"
+                class="btn btn-outline-primary btn-rounded-x"
+                (click)="updateCart()"
+              >
+                Update cart
+              </button>
+
+              <input
+                type="hidden"
+                id="woocommerce-cart-nonce"
+                name="woocommerce-cart-nonce"
+                value="2d79301836"
+              /><input
+                type="hidden"
+                name="_wp_http_referer"
+                value="/leona/cart/"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+
+    <div class="row mx-0 justify-content-end cart-collaterals">
+      <div class="col-md-6 cart_totals">
+        <h5>Cart totals</h5>
+
+        <table cellspacing="0" class="shop_table shop_table_responsive">
+          <tbody>
+            <tr class="cart-subtotal">
+              <th>Subtotal</th>
+              <td data-title="Subtotal">
+                <span class="woocommerce-Price-amount amount"
+                  ><span class="woocommerce-Price-currencySymbol">£</span
+                  >120.00</span
+                >
+              </td>
+            </tr>
+
+            <tr class="order-total">
+              <th>Total</th>
+              <td data-title="Total">
+                <strong
+                  ><span class="woocommerce-Price-amount amount"
+                    ><span class="woocommerce-Price-currencySymbol">£</span
+                    >120.00</span
+                  ></strong
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="wc-proceed-to-checkout">
+          <button class="btn btn-outline-primary btn-rounded-x">
+            Proceed to checkout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <main class="mh-vh-100 d-flex justify-content-center align-items-center">
+  <section class="shopping-cart" *ngIf="cartItems.length; else emptyCart">
+    <div class="container">
+      <h2 class="mb-3">Cart</h2>
+      <div class="content row mx-0 justify-content-center">
+        <div class="col-md-12 col-lg-6">
+          <div class="items">
+            <div *ngFor="let item of cartItems" class="py-4 product">
+              <div class="mb-3 row align-items-center">
+                <div class="col-2">
+                  <img
+                    class="img-fluid mx-auto d-block image"
+                    src="https://subsolardesigns.com/leona/wp-content/uploads/2019/04/back_home1-600x900.jpg"
+                    height="100"
+                  />
+                </div>
+                <div class="col-10">
+                  <div class="info">
+                    <div class="row align-items-center">
+                      <div class="col-4 product-name">
+                        <div class="product-name">
+                          <h5>{{ item.name }}</h5>
+                        </div>
+                      </div>
+                      <div class="col-4 mx-auto">
+                        <app-cart-item-counter
+                          [cartItem]="item"
+                          (pre)
+                        ></app-cart-item-counter>
+                      </div>
+                      <div class="col-2 price">
+                        <span>${{ item.price * item.quantity }}</span>
+                      </div>
+                      <div class="col-2">
+                        <mat-icon (click)="deleteItem(item)">delete</mat-icon>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <mat-divider></mat-divider>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <div class="summary">
+            <h3>Summary</h3>
+            <div class="summary-item">
+              <span class="text">Subtotal</span
+              ><span class="price">${{ totalPrice }}</span>
+            </div>
+            <div class="summary-item">
+              <span class="text">Discount</span><span class="price">$0</span>
+            </div>
+            <div class="summary-item">
+              <span class="text">Shipping</span><span class="price">$0</span>
+            </div>
+            <div class="summary-item">
+              <span class="text">Total</span
+              ><span class="price">${{ totalPrice }}</span>
+            </div>
+            <div class="text-center">
+              <button type="button" class="btn btn-primary btn-lg">
+                Checkout
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        class="btn-primary my-3 px-3 py-2 rounded-2"
+        [routerLink]="'/shop'"
+      >
+        Return to shop
+      </button>
+    </div>
+  </section>
+
+  <ng-template #emptyCart>
+    <div class="text-center">
+      <h3 class="mb-3">Your Shopping Cart is empty.</h3>
+      <button class="btn-primary px-3 py-2 rounded-2" [routerLink]="'/shop'">
+        Return to shop
+      </button>
+    </div>
+  </ng-template>
+</main> -->

@@ -1,8 +1,14 @@
 <mat-card class="book-simple-card">
-  <img mat-card-image [src]="imgSrc" alt="Photo of a Shiba Inu" />
+  <app-rotating-book
+    imgSrc="https://subsolardesigns.com/leona/wp-content/uploads/2019/04/fairy_journey1-600x900.jpg"
+    (click)="viewDetails()"
+  ></app-rotating-book>
+
+  <mat-card-title (click)="viewDetails()" class="text-center py-2">{{
+    book.name
+  }}</mat-card-title>
 
   <mat-card-content align="center">
-    <mat-card-title class="my-2">{{ book.name }}</mat-card-title>
     <mat-card-subtitle class="my-2 text-primary"
       >${{ book.price }}</mat-card-subtitle
     >

@@ -1,0 +1,22 @@
+<div
+  class="d-flex justify-content-center align-items-center mh-vh-100"
+  *ngIf="isLoadingBooks; else booksScreen"
+>
+  <app-spinner></app-spinner>
+</div>
+
+<ng-template #booksScreen>
+  <app-navbar></app-navbar>
+
+  <div class="bg-light">
+    <app-banner></app-banner>
+    <app-new-books [newBooks]="randomBooks"></app-new-books>
+    <hr class="mx-3" />
+    <app-best-sellers-books
+      [bestSellBooks]="randomBooks"
+    ></app-best-sellers-books>
+    <app-feature-books></app-feature-books>
+    <hr class="mx-3" />
+    <app-categories></app-categories>
+  </div>
+</ng-template>

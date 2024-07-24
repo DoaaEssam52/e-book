@@ -93,7 +93,7 @@ mat-label {
   font-family: "Quicksand-SemiBold";
   font-size: 14px;
 
-  color: #090937;
+  color: #0f1f2c;
 }
 
 .mat-mdc-card-title {
@@ -126,4 +126,53 @@ mat-label {
 
 .min-w-unset {
   min-width: unset !important;
+}
+
+.p-carousel .p-carousel-indicators {
+  align-items: center;
+
+  .p-carousel-indicator button {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid #232323;
+
+    &::hover {
+      background-color: #232323;
+    }
+  }
+
+  .p-carousel-indicator.p-highlight button {
+    width: 15px;
+    height: 15px;
+
+    background-color: #f66e5e;
+    border: 2px solid #f66e5e;
+
+    &::hover {
+      background-color: #f66e5e;
+    }
+  }
+}
+
+.mh-vh-100 {
+  min-height: 100vh;
+}
+
+.mat-mdc-form-field-error {
+  font-size: 14px !important;
+  margin-top: 2px !important;
+}
+
+.bg-light-pink {
+  background-color: #f4ede7;
+}
+
+.bg-light-mint {
+  background-color: #dce8dd !important;
+}
+
+.bg-light{
+  background-color: #fafafa !important;
 }

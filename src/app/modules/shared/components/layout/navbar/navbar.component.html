@@ -3,15 +3,58 @@
     <h2 class="navbar__logo">E-Book</h2>
 
     <div class="navbar__routes">
-      <button
+      <span
         *ngFor="let tab of navTabs"
-        mat-button
         [routerLink]="[tab.routeTo]"
         routerLinkActive="underline-label"
-        class="px-0 min-w-unset mx-2"
+        (click)="updateActiveTab(tab.title)"
+        class="mx-2 bg-transparent"
+        [class.active]="activeTab == tab.title"
       >
         {{ tab.title }}
-      </button>
+      </span>
+
+      <span
+        routerLinkActive="underline-label"
+        routerLink="/cart"
+        class="px-0 min-w-unset mx-2"
+      >
+        <mat-icon>shopping_cart</mat-icon>
+      </span>
+
+      <span
+        routerLinkActive="underline-label"
+        class="px-0 min-w-unset mx-2"
+        (click)="openDialog()"
+      >
+        Logout
+
+        <!-- <mat-icon
+          aria-hidden="false"
+          aria-label="logout icon"
+          fontIcon="logout"
+          [ariaSetSize]="50"
+        ></mat-icon> -->
+      </span>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
+
+<ng-template #logoutModal>
+  <div class="px-5 py-4">
+    <h4 class="mb-5">Are you sure you want to logout?</h4>
+
+    <div class="d-flex justify-content-end">
+      <button
+        class="px-5 mx-2 btn btn-outline-primary rounded"
+        (click)="logout()"
+      >
+        Logout
+      </button>
+
+      <button mat-dialog-close class="px-3 btn btn-primary rounded">
+        Cancel
+      </button>
+    </div>
+  </div>
+</ng-template>

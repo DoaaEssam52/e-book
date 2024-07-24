@@ -6,24 +6,31 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () =>
-      import('./modules/authentication/authentication.module').then(
+      import('./modules/feature/authentication/authentication.module').then(
         (m) => m.AuthenticationModule
       ),
   },
   {
     path: 'home',
     loadChildren: () =>
-      import('./modules/home/home.module').then((m) => m.HomeModule),
+      import('./modules/feature/home/home.module').then((m) => m.HomeModule),
   },
   {
-    path: 'books',
+    path: 'shop',
     loadChildren: () =>
-      import('./modules/books/books.module').then((m) => m.BooksModule),
+      import('./modules/feature/books/books.module').then((m) => m.BooksModule),
   },
   {
     path: 'cart',
     loadChildren: () =>
-      import('./modules/cart/cart.module').then((m) => m.CartModule),
+      import('./modules/feature/cart/cart.module').then((m) => m.CartModule),
+  },
+  {
+    path: 'contact-us',
+    loadChildren: () =>
+      import('./modules/feature/contact-us/contact-us.module').then(
+        (m) => m.ContactUsModule
+      ),
   },
 ];
 

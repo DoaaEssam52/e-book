@@ -7,6 +7,8 @@ import { Book } from '../../shared/models/book.model';
 })
 export class FilterByKeyPipe implements PipeTransform {
   transform(books: Book[], key: keyof Book, value: any): Book[] {
-    return books.filter((book: Book) => book[key] == value);
+    return books.filter((book: Book) =>
+      (book[key] as string).toLowerCase().includes(value.toLowerCase())
+    );
   }
 }

@@ -1,0 +1,21 @@
+<div class="image-has-rotate">
+  <div class="woocommerce-product-image">
+    <div class="image-rotate-shadow"></div>
+
+    <img [src]="imgSrc" class="img-fluid" alt="" />
+    <div
+      class="rotate-before-image"
+      [ngStyle]="{
+        'background-image':
+          '
+      linear-gradient(
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.45)
+          ),      
+      url(' +
+          imgSrc +
+          ')'
+      }"
+    ></div>
+  </div>
+</div>

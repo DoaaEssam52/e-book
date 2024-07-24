@@ -1,0 +1,16 @@
+.feature-book {
+  position: relative;
+
+  z-index: 10000;
+}
+
+img.leaf {
+  position: absolute;
+
+  top: 50%;
+  left: 0;
+
+  transform: translate(-80%, -50%);
+
+  z-index: 1;
+}

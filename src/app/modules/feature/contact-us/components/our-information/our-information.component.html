@@ -1,0 +1,14 @@
+<div
+  class="py-5 row mx-0 justify-content-center align-items-center text-center"
+>
+  <div *ngFor="let info of information" class="col-md-3">
+    <mat-icon fontSet="material-icons-outlined">{{ info.icon }}</mat-icon>
+    <h5 class="mt-3 mb-2">{{ info.title }}</h5>
+    <p>{{ info.data }}</p>
+  </div>
+
+  <div class="section-divider col-12 position-relative">
+    <mat-divider></mat-divider>
+    <img src="../../../../../../assets/images/leaf-1_2.png" alt="" />
+  </div>
+</div>

@@ -1,0 +1,86 @@
+<form [formGroup]="filterForm">
+  <div class="row justify-content-between mt-2">
+    <div class="col-12 form-group">
+      <input
+        class="form-control"
+        formControlName="name"
+        placeholder="Search book name ..."
+      />
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Price </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="row justify-content-between mt-2">
+        <div class="col-6 form-group">
+          <mat-label>Min Price</mat-label>
+          <input class="form-control" formControlName="minPrice" />
+        </div>
+        <div class="col-6 form-group">
+          <mat-label>Max Price</mat-label>
+          <input class="form-control" formControlName="maxPrice" />
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-divider></mat-divider>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Author </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-select
+        class="mt-2"
+        formControlName="author"
+        placeholder="Choose author"
+      >
+        <mat-option *ngFor="let author of authors" [value]="author">{{
+          author | titlecase
+        }}</mat-option>
+      </mat-select>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-divider></mat-divider>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Category </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-select
+        class="mt-2"
+        formControlName="category"
+        placeholder="Choose category"
+      >
+        <mat-option
+          *ngFor="let category of categories"
+          [value]="category._id"
+          >{{ category.title | titlecase }}</mat-option
+        >
+      </mat-select>
+    </mat-expansion-panel>
+  </mat-accordion>
+</form>
+<button
+  mat-flat-button
+  class="w-100 mb-2 mt-4 btn-primary"
+  (click)="submitFilter()"
+>
+  Filter
+</button>
+<button
+  mat-stroked-button
+  class="w-100 btn-outline-primary"
+  (click)="resetFilter()"
+>
+  Reset
+</button>

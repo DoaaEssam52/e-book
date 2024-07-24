@@ -1,0 +1,25 @@
+.auth-container {
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
+    url("../../../../assets/images/auth.webp");
+
+  background-size: cover;
+  width: 100%;
+
+  .mat-mdc-form-field {
+    height: 40px !important;
+  }
+
+  .mat-mdc-text-field-wrapper {
+    height: 40px !important;
+  }
+
+  .mat-mdc-form-field-flex {
+    margin-top: -7px !important;
+  }
+}
+
+.sub-title {
+  color: #09093799;
+
+  font-family: Quicksand-Medium;
+}

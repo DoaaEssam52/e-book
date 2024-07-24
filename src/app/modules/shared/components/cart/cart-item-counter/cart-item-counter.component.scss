@@ -1,5 +1,20 @@
-mat-icon {
-  font-size: 15px;
-  height: 15px;
-  width: 15px;
+.counter {
+  &__value {
+    font-size: 26px !important;
+    font-weight: 600;
+
+    color: #7A7A7A !important;
+  }
+
+  &__control {
+    font-size: 20px;
+    font-weight: 600 !important;
+
+    width: 20px;
+    height: 20px;
+
+    color: #a2a2a2;
+
+    display: block;
+  }
 }

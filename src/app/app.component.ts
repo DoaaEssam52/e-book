@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { CartItem } from './modules/shared/models/cart-item.model';
-import { initCart } from './store/actions/cart-action';
+
+// import { CartItem } from './modules/shared/models/cart-item.model';
+
+import { retreiveUserToken } from './store/actions/auth-action';
+import { getCategoriesRequest } from './store/actions/categories-action';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +12,16 @@ import { initCart } from './store/actions/cart-action';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'books';
-
-  constructor(private store: Store<{ cartItems: CartItem[] }>) {}
+  // constructor(private store: Store<{ cartItems: CartItem[] }>) {}
+  constructor(private store: Store<any>) {}
 
   ngOnInit(): void {
-    this.store.dispatch(initCart());
+    const token = localStorage.getItem('token');
+
+    // Dispatch User Token, and Categories
+    if (token) {
+      this.store.dispatch(retreiveUserToken({ token }));
+      this.store.dispatch(getCategoriesRequest());
+    }
   }
 }

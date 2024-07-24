@@ -3,22 +3,35 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpHeaders,
-  HttpResponse,
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 
+import { Store } from '@ngrx/store';
+import { State } from '../store/models/state-model';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { environment } from '../../environments/environment';
+import { getUserDataRequest } from '../store/actions/auth-action';
+import { authSelector } from '../store/selectors/auth-selector';
+
 @Injectable()
 export class HttpInterceptor implements HttpInterceptor {
-  constructor() {}
+  constructor(private _snackBar: MatSnackBar, private store: Store<State>) {}
 
   intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    const baseUrl = 'https://upskilling-egypt.com:3007/api';
-    const accessToken = localStorage.getItem('accessToken');
+    const baseUrl = environment.baseUrl;
+    let accessToken: any;
+
+    this.store.select(authSelector).subscribe({
+      next: (data) => {
+        accessToken = data.token;
+      },
+    });
 
     let newRequest = request.clone({
       url: baseUrl + '/' + request.url,
@@ -26,16 +39,20 @@ export class HttpInterceptor implements HttpInterceptor {
     });
 
     return next.handle(newRequest).pipe(
-      catchError((error: HttpErrorResponse) => {
-        let errorMsg = '';
-        // let errorStatus = error.status;
+      catchError((httpError: HttpErrorResponse) => {
+        let error = httpError.error.message;
 
-        if(error.status === 401){
+        let errorMessage = error;
 
+        if (Array.isArray(error) && error.length) {
+          errorMessage = error[0];
         }
 
-       
-        return throwError(errorMsg);
+        this._snackBar.open(errorMessage, 'close', {
+          duration: 3000,
+        });
+
+        return throwError(errorMessage);
       })
     );
   }

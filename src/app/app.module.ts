@@ -3,14 +3,26 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './modules/shared/shared.module';
+
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+
+import { BooksReducer } from './store/reducers/books-reducer';
+import { CategoriesReducer } from './store/reducers/categories-reducer';
+import { AuthReducer } from './store/reducers/auth-reducer';
+import { NavbarReducer } from './store/reducers/navbar-reducer';
+import { BasketReducer } from './store/reducers/basket-reducer';
+
+import { BooksEffects } from './store/effects/books-effects';
+import { CategoriesEffects } from './store/effects/categories-effects';
+import { AuthEffects } from './store/effects/auth-effects';
+import { BasketEffects } from './store/effects/basket-effects';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpInterceptor } from './interceptors/http.interceptor';
 
 import { AppComponent } from './app.component';
-
-import { HttpInterceptor } from './interceptors/http.interceptor';
-import { CartReducer } from './store/reducers/cart-reducer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +31,23 @@ import { CartReducer } from './store/reducers/cart-reducer';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    StoreModule.forRoot({ cartItems: CartReducer }, {}),
+    StoreModule.forRoot(
+      {
+        booksData: BooksReducer,
+        categoriesData: CategoriesReducer,
+        authData: AuthReducer,
+        navbarDate: NavbarReducer,
+        basketData: BasketReducer,
+      },
+      {}
+    ),
+    EffectsModule.forRoot([
+      BooksEffects,
+      CategoriesEffects,
+      AuthEffects,
+      BasketEffects,
+    ]),
+    SharedModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptor, multi: true },

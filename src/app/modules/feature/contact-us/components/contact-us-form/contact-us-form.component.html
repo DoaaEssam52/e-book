@@ -1,0 +1,131 @@
+<div class="contact-us-form position-relative">
+  <div class="img-container"></div>
+
+  <h1 class="text-center">write to us now.</h1>
+
+  <p class="text-center">We are replying in the next 24 hours. Yes, we do!</p>
+
+  <form
+    [formGroup]="contactUsForm"
+    class="my-4 mx-auto row justify-content-center"
+  >
+    <div class="col-6">
+      <div class="row">
+        <div class="col-12 form-group">
+          <mat-label>Your Name</mat-label>
+
+          <mat-form-field>
+            <input matInput formControlName="name" />
+          </mat-form-field>
+
+          <ng-container
+            *ngIf="
+              contactUsForm.controls.name.touched &&
+              contactUsForm.controls.name.errors
+            "
+          >
+            <ng-container
+              [ngSwitch]="contactUsForm.controls.name | errorMessages"
+            >
+              <mat-error *ngSwitchCase="'required'">Name is required</mat-error>
+              <mat-error *ngSwitchCase="'minlength'"
+                >Name should be at least 3 characters</mat-error
+              >
+              <mat-error *ngSwitchCase="'maxlength'"
+                >Name should be at most 20 characters</mat-error
+              >
+            </ng-container>
+          </ng-container>
+        </div>
+
+        <div class="col-12 form-group">
+          <mat-label>Your Email</mat-label>
+
+          <mat-form-field>
+            <input matInput formControlName="email" />
+          </mat-form-field>
+          <ng-container
+            *ngIf="
+              contactUsForm.controls.email.touched &&
+              contactUsForm.controls.email.errors
+            "
+          >
+            <ng-container
+              [ngSwitch]="contactUsForm.controls.email | errorMessages"
+            >
+              <mat-error *ngSwitchCase="'required'"
+                >Email is required</mat-error
+              >
+              <mat-error *ngSwitchCase="'email'">Enter valid email</mat-error>
+            </ng-container>
+          </ng-container>
+        </div>
+
+        <div class="col-12 form-group">
+          <mat-label>Subject</mat-label>
+
+          <mat-form-field>
+            <input matInput formControlName="subject" />
+          </mat-form-field>
+
+          <ng-container
+            *ngIf="
+              contactUsForm.controls.subject.touched &&
+              contactUsForm.controls.subject.errors
+            "
+          >
+            <ng-container
+              [ngSwitch]="contactUsForm.controls.subject | errorMessages"
+            >
+              <mat-error *ngSwitchCase="'required'"
+                >Subject is required</mat-error
+              >
+              <mat-error *ngSwitchCase="'minlength'"
+                >Subject should be at least 3 characters</mat-error
+              >
+              <mat-error *ngSwitchCase="'maxlength'"
+                >Subject should be at most 50 characters</mat-error
+              >
+            </ng-container>
+          </ng-container>
+        </div>
+
+        <div class="col-12 form-group">
+          <mat-label>Your Message</mat-label>
+
+          <mat-form-field>
+            <textarea matInput formControlName="message" rows="3"></textarea>
+          </mat-form-field>
+
+          <ng-container
+            *ngIf="
+              contactUsForm.controls.message.touched &&
+              contactUsForm.controls.message.errors
+            "
+          >
+            <ng-container
+              [ngSwitch]="contactUsForm.controls.message | errorMessages"
+            >
+              <mat-error *ngSwitchCase="'required'"
+                >Message is required</mat-error
+              >
+              <mat-error *ngSwitchCase="'minlength'"
+                >Message should be at least 3 characters</mat-error
+              >
+              <mat-error *ngSwitchCase="'maxlength'"
+                >Message should be at most 100 characters</mat-error
+              >
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+      <button
+        (click)="submit()"
+        mat-flat-button
+        class="mb-2 btn px-5 py-4 bg-dark text-white btn-rounded-x"
+      >
+        Send
+      </button>
+    </div>
+  </form>
+</div>

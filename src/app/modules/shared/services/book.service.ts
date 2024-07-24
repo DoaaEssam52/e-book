@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { GetAllBooks } from '../models/get-all-books.model';
+import { Book } from '../models/book.model';
 
 import { environment } from 'src/environments/environment';
+import { GetAllBooks } from '../models/get-all-books.model';
 
 @Injectable({
   providedIn: 'root',
@@ -19,5 +20,9 @@ export class BookService {
 
   getAllCategories(): Observable<any> {
     return this._httpClient.get(`${environment.getAllCategories}`);
+  }
+
+  getBookById(bookId: string): Observable<Book> {
+    return this._httpClient.get<Book>(`${environment.getBook}/${bookId}`);
   }
 }
