@@ -25,8 +25,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   isDefaultStyle = false;
 
-  activeTab = 'Home';
-
   navTabs = [
     { title: 'Home', routeTo: '/home' },
     { title: 'Shop', routeTo: '/shop' },
@@ -82,10 +80,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   openDialog() {
     this.dialog.open(this.logoutModal);
-  }
-
-  updateActiveTab(tab: string): void {
-    this.activeTab = tab;
   }
 
   logout(): void {

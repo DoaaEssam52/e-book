@@ -6,14 +6,13 @@
       <span
         *ngFor="let tab of navTabs"
         [routerLink]="[tab.routeTo]"
-        routerLinkActive="underline-label"
-        (click)="updateActiveTab(tab.title)"
+        [navigateTo]="tab.routeTo"
+        [appHandleActiveRoute]="'active'"
         class="mx-2 bg-transparent"
-        [class.active]="activeTab == tab.title"
       >
         {{ tab.title }}
       </span>
-<!-- 
+      <!-- 
       <span
         routerLinkActive="underline-label"
         routerLink="/cart"

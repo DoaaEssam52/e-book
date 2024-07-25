@@ -31,6 +31,8 @@ import { ImgPathPipe } from './pipes/img-path.pipe';
 import { ErrorMessagesPipe } from './pipes/error-messages.pipe';
 import { FilterByKeyPipe } from './pipes/filter-by-key.pipe';
 
+import { HandleActiveRouteDirective } from './directives/handle-active-route.directive';
+
 import { NavbarComponent } from './components/layout/navbar/navbar.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { BookCardComponent } from './components/books/book-card/book-card.component';
@@ -49,6 +51,7 @@ import { RotatingBookComponent } from './components/books/rotating-book/rotating
     CartItemCounterComponent,
     SpinnerComponent,
     RotatingBookComponent,
+    HandleActiveRouteDirective,
   ],
   imports: [
     CommonModule,
@@ -95,6 +98,7 @@ import { RotatingBookComponent } from './components/books/rotating-book/rotating
     ImgPathPipe,
     ErrorMessagesPipe,
     FilterByKeyPipe,
+    HandleActiveRouteDirective,
     NavbarComponent,
     FooterComponent,
     BookCardComponent,
