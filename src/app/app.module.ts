@@ -8,13 +8,11 @@ import { SharedModule } from './modules/shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
-import { BooksReducer } from './store/reducers/books-reducer';
 import { CategoriesReducer } from './store/reducers/categories-reducer';
 import { AuthReducer } from './store/reducers/auth-reducer';
 import { NavbarReducer } from './store/reducers/navbar-reducer';
 import { BasketReducer } from './store/reducers/basket-reducer';
 
-import { BooksEffects } from './store/effects/books-effects';
 import { CategoriesEffects } from './store/effects/categories-effects';
 import { AuthEffects } from './store/effects/auth-effects';
 import { BasketEffects } from './store/effects/basket-effects';
@@ -33,7 +31,6 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     StoreModule.forRoot(
       {
-        booksData: BooksReducer,
         categoriesData: CategoriesReducer,
         authData: AuthReducer,
         navbarDate: NavbarReducer,
@@ -42,7 +39,6 @@ import { AppComponent } from './app.component';
       {}
     ),
     EffectsModule.forRoot([
-      BooksEffects,
       CategoriesEffects,
       AuthEffects,
       BasketEffects,

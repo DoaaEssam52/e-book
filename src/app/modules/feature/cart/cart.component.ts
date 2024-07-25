@@ -5,11 +5,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 
 import { BasketSelector } from '../../../store/selectors/basket-selector';
-import { booksSelector } from '../../../store/selectors/books-selector';
+// import { booksSelector } from '../../../store/selectors/books-selector';
 
 import { State } from '../../../store/models/state-model';
 import { Book } from '../../shared/models/book.model';
-import { getBooksRequest } from 'src/app/store/actions/books-action';
+// import { getBooksRequest } from 'src/app/store/actions/books-action';
 import { updateBasket } from 'src/app/store/actions/basket-action';
 
 @Component({
@@ -33,19 +33,19 @@ export class CartComponent {
   constructor(private store: Store<State>, private _snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
-    this.store.dispatch(getBooksRequest());
+   // this.store.dispatch(getBooksRequest());
 
     this.getBooks();
   }
 
   getBooks(): void {
-    this.store.select(booksSelector).subscribe({
-      next: ({ books }) => {
-        this.allBooks = books ?? [];
+    // this.store.select(booksSelector).subscribe({
+    //   next: ({ books }) => {
+    //     this.allBooks = books ?? [];
 
-        this.getCartItems();
-      },
-    });
+    //     this.getCartItems();
+    //   },
+    // });
   }
 
   getCartItems(): void {

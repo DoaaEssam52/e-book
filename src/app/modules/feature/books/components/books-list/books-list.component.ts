@@ -1,12 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-
-import { Store } from '@ngrx/store';
-import { getBooksRequest } from '../../../../../store/actions/books-action';
-import { booksSelector } from '../../../../../store/selectors/books-selector';
-import { State } from '../../../../../store/models/state-model';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 import { BooksFilteration } from '../../models/filteration-model';
 import { Book } from '../../../../../modules/shared/models/book.model';
+
+import { BookService } from '../../../../../modules/shared/services/book.service';
 
 import { PriceRangePipe } from '../../pipes/price-range.pipe';
 import { FilterByKeyPipe } from '../../../../shared/pipes/filter-by-key.pipe';
@@ -21,33 +18,33 @@ export class BooksListComponent implements OnInit {
 
   filteration!: BooksFilteration;
 
-  pageIndex!: number;
+  pageIndex = 0;
   pageSize = 8;
   length!: number;
 
-  books!: Book[];
-  filteredBooks!: Book[];
+  books: Book[] = [];
+  filteredBooks: Book[] = [];
 
   priceRangePipe = new PriceRangePipe();
   filterByKeyPipe = new FilterByKeyPipe();
 
-  constructor(private _store: Store<State>) {}
+  constructor(private _books: BookService) {}
 
   ngOnInit(): void {
-    this._store.dispatch(getBooksRequest());
-
     this.getBooks();
   }
 
   getBooks(): void {
-    this._store.select(booksSelector).subscribe({
-      next: ({ books }) => {
-        this.length = books.length;
+    this._books.getAllBooks().subscribe({
+      next: ({ data }) => {
+        setTimeout(() => {
+          this.length = data.length;
 
-        this.books = books ?? [];
-        this.filteredBooks = books ?? [];
+          this.books = data;
+          this.filteredBooks = data;
 
-        this.isLoading = false;
+          this.isLoading = false;
+        });
       },
       error: () => (this.isLoading = false),
     });
