@@ -1,9 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Store } from '@ngrx/store';
-
-import { navbarSelector } from '../../../../../store/selectors/navbar-selector';
 
 import { BookService } from '../../../../../modules/shared/services/book.service';
 
@@ -16,12 +14,9 @@ import { Subscription } from 'rxjs';
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.scss'],
 })
-export class BookDetailsComponent implements OnInit, OnDestroy {
+export class BookDetailsComponent implements OnDestroy {
   book!: Book;
 
-  navbarHeight: number = 0;
-
-  navbarSubscription!: Subscription;
   routeSubscription!: Subscription;
   getBooksSubscription!: Subscription;
 
@@ -37,18 +32,6 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit(): void {
-
-    this.navbarSubscription = this.store.select(navbarSelector).subscribe({
-      next: ({ height }) => {
-        const pageContainer = document.getElementById('page-container');
-
-        if (pageContainer)
-          pageContainer.style.marginTop = height.toString() + 'px';
-      },
-    });
-  }
-
   getBookById(id: string): void {
     this.getBooksSubscription = this._books.getBookById(id).subscribe({
       next: (book) => {
@@ -58,7 +41,6 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.navbarSubscription.unsubscribe();
     this.routeSubscription.unsubscribe();
     this.getBooksSubscription.unsubscribe();
   }

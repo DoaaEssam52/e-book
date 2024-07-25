@@ -10,7 +10,6 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { CategoriesReducer } from './store/reducers/categories-reducer';
 import { AuthReducer } from './store/reducers/auth-reducer';
-import { NavbarReducer } from './store/reducers/navbar-reducer';
 import { BasketReducer } from './store/reducers/basket-reducer';
 
 import { CategoriesEffects } from './store/effects/categories-effects';
@@ -33,7 +32,6 @@ import { AppComponent } from './app.component';
       {
         categoriesData: CategoriesReducer,
         authData: AuthReducer,
-        navbarDate: NavbarReducer,
         basketData: BasketReducer,
       },
       {}
