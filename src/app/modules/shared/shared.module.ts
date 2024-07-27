@@ -33,6 +33,7 @@ import { ErrorMessagesPipe } from './pipes/error-messages.pipe';
 import { FilterByKeyPipe } from './pipes/filter-by-key.pipe';
 
 import { HandleActiveRouteDirective } from './directives/handle-active-route.directive';
+import { ScreenSizeDirective } from './directives/screen-size.directive';
 
 import { NavbarComponent } from './components/layout/navbar/navbar.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
@@ -55,6 +56,7 @@ import { WisdomComponent } from './components/layout/wisdom/wisdom.component';
     RotatingBookComponent,
     HandleActiveRouteDirective,
     WisdomComponent,
+    ScreenSizeDirective,
   ],
   imports: [
     CommonModule,
@@ -104,6 +106,7 @@ import { WisdomComponent } from './components/layout/wisdom/wisdom.component';
     ErrorMessagesPipe,
     FilterByKeyPipe,
     HandleActiveRouteDirective,
+    ScreenSizeDirective,
     NavbarComponent,
     FooterComponent,
     BookCardComponent,

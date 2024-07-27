@@ -1,16 +1,18 @@
-<div class="contact-us-form position-relative">
+<div class="contact-us-form position-relative pb-5">
   <div class="img-container"></div>
 
   <h1 class="text-center">write to us now.</h1>
 
-  <p class="text-center">We are replying in the next 24 hours. Yes, we do!</p>
+  <p class="text-center px-2">
+    We are replying in the next 24 hours. Yes, we do!
+  </p>
 
   <form
     [formGroup]="contactUsForm"
     class="my-4 mx-auto row justify-content-center"
   >
-    <div class="col-6">
-      <div class="row">
+    <div class="col-10 col-md-8 col-lg-6">
+      <div class="row mx-0">
         <div class="col-12 form-group">
           <mat-label>Your Name</mat-label>
 
@@ -122,7 +124,7 @@
       <button
         (click)="submit()"
         mat-flat-button
-        class="mb-2 btn px-5 py-4 bg-dark text-white btn-rounded-x"
+        class="my-2 btn px-5 py-4 bg-dark text-white btn-rounded-x"
       >
         Send
       </button>

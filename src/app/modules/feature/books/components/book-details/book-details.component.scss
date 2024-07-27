@@ -6,3 +6,9 @@
     font-weight: 600;
   }
 }
+
+@media (max-width: 767px) {
+  .img-fluid {
+    height: 300px;
+  }
+}

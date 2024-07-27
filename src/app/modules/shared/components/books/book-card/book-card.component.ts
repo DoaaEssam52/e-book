@@ -1,8 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { MatSnackBar } from '@angular/material/snack-bar';
-
 import { Store } from '@ngrx/store';
 
 import { Book } from '../../../models/book.model';
@@ -23,11 +21,7 @@ export class BookCardComponent {
 
   isEmptyCart: boolean = true;
 
-  constructor(
-    private store: Store<State>,
-    private _snackBar: MatSnackBar,
-    private _router: Router
-  ) {}
+  constructor(private store: Store<State>, private _router: Router) {}
 
   ngOnInit(): void {
     this.store.select(BasketSelector).subscribe({

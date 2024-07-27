@@ -1,0 +1,39 @@
+.p-carousel .p-carousel-indicators {
+  align-items: center;
+
+  .p-carousel-indicator button {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid #232323;
+
+    &::hover {
+      background-color: #232323;
+    }
+  }
+
+  .p-carousel-indicator.p-highlight button {
+    width: 15px;
+    height: 15px;
+
+    background-color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+
+    &::hover {
+      background-color: var(--primary-color);
+    }
+  }
+}
+
+.p-carousel .p-carousel-content .p-carousel-prev:enabled:hover,
+.p-carousel .p-carousel-content .p-carousel-next:enabled:hover {
+  background: transparent !important;
+}
+
+.p-icon {
+  width: 2rem;
+  height: 2rem;
+  color: var(--primary-color);
+  margin: 0 15px;
+}

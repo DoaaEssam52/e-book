@@ -1,0 +1,46 @@
+// ICONS
+.mat-icon {
+  cursor: pointer;
+}
+
+// LABELS
+mat-label {
+  font-family: "Quicksand-SemiBold";
+  font-size: 14px;
+
+  color: #0f1f2c;
+}
+
+// CARDS
+.mat-mdc-card-title {
+  font-family: "Quicksand-Bold" !important;
+  font-weight: 700 !important;
+
+  color: #7a7a7a;
+}
+
+// MENU
+.mat-mdc-menu-content {
+  padding: 0 !important;
+
+  .mat-mdc-menu-item {
+    font-size: 15px;
+    font-weight: 800;
+
+    &:hover {
+      color: var(--primary-color);
+      background-color: initial !important;
+    }
+  }
+}
+
+// PAGINATOR
+.mat-mdc-paginator {
+  background-color: transparent !important;
+
+  @media (max-width: 460px) {
+    .mat-mdc-paginator-range-actions .mat-mdc-paginator-range-label {
+      display: none !important;
+    }
+  }
+}

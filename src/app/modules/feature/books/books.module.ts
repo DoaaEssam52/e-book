@@ -6,7 +6,6 @@ import { SharedModule } from '../../shared/shared.module';
 
 import { PriceRangePipe } from './pipes/price-range.pipe';
 
-import { CategoryCardComponent } from './components/category-card/category-card.component';
 import { BooksListComponent } from './components/books-list/books-list.component';
 import { BooksBannerComponent } from './components/books-list/books-banner/books-banner.component';
 import { BooksFilterComponent } from './components/books-list/books-filter/books-filter.component';
@@ -17,7 +16,6 @@ import { BooksComponent } from './books.component';
 @NgModule({
   declarations: [
     PriceRangePipe,
-    CategoryCardComponent,
     BooksListComponent,
     BooksBannerComponent,
     BooksFilterComponent,
@@ -26,6 +24,5 @@ import { BooksComponent } from './books.component';
     BooksComponent,
   ],
   imports: [CommonModule, BooksRoutingModule, SharedModule],
-  exports: [CategoryCardComponent],
 })
 export class BooksModule {}

@@ -18,3 +18,9 @@
     display: block;
   }
 }
+
+@media (max-width: 600px) {
+  .cart-item-counter {
+    justify-content: center !important;
+  }
+}

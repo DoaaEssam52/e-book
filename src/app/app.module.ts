@@ -1,25 +1,29 @@
+// MODULES
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './modules/shared/shared.module';
-
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
+// INTERCEPTORS
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpInterceptor } from './interceptors/http.interceptor';
+
+// REDUCERS
 import { CategoriesReducer } from './store/reducers/categories-reducer';
 import { AuthReducer } from './store/reducers/auth-reducer';
 import { BasketReducer } from './store/reducers/basket-reducer';
 import { BooksReducer } from './store/reducers/books-reducer';
 
+// EFFECTS
 import { CategoriesEffects } from './store/effects/categories-effects';
 import { AuthEffects } from './store/effects/auth-effects';
 import { BasketEffects } from './store/effects/basket-effects';
 
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpInterceptor } from './interceptors/http.interceptor';
-
+// COMPONENTS
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -34,15 +38,11 @@ import { AppComponent } from './app.component';
         categoriesData: CategoriesReducer,
         authData: AuthReducer,
         basketData: BasketReducer,
-        booksData: BooksReducer
+        booksData: BooksReducer,
       },
       {}
     ),
-    EffectsModule.forRoot([
-      CategoriesEffects,
-      AuthEffects,
-      BasketEffects,
-    ]),
+    EffectsModule.forRoot([CategoriesEffects, AuthEffects, BasketEffects]),
     SharedModule,
   ],
   providers: [

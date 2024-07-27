@@ -1,5 +1,5 @@
 h1 {
-  color: #f66e5e;
+  color: var(--primary-color);
   text-align: center;
   font-family: sans-serif;
   text-transform: uppercase;
@@ -20,7 +20,7 @@ h1:after {
 }
 
 .book {
-  border: 3px solid #f66e5e;
+  border: 3px solid var(--primary-color);
   width: 60px;
   height: 45px;
   position: relative;
@@ -31,14 +31,14 @@ h1:after {
   display: block;
   width: 30px;
   height: 45px;
-  border: 3px solid #f66e5e;
-  border-left: 1px solid #f66e5e;
+  border: 3px solid var(--primary-color);
+  border-left: 1px solid var(--primary-color);
   margin: 0;
   position: absolute;
   right: -4px;
   top: -4px;
   overflow: hidden;
-  background: #f66e5e;
+  background: var(--primary-color);
   transform-style: preserve-3d;
   -webkit-transform-origin: left center;
   transform-origin: left center;

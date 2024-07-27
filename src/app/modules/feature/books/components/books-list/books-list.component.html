@@ -10,13 +10,13 @@
 
   <ng-template #showBooks>
     <div class="row mx-0">
-      <div class="col-3">
+      <div class="col-lg-3 mb-5">
         <app-books-filter
           [categoryId]="categoryId"
           (filter)="filter($event)"
         ></app-books-filter>
       </div>
-      <div class="col-9 row mx-0">
+      <div class="col-lg-9 row mx-0">
         <div
           *ngIf="!length; else booksList"
           class="d-flex justify-content-center align-items-center"
@@ -33,7 +33,7 @@
                   : pageIndex * pageSize + pageSize;
               let i = index
             "
-            class="col-md-3"
+            class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 text-center"
             [book]="book"
             [imgSrc]="booksImages[i]"
           ></app-book-card>

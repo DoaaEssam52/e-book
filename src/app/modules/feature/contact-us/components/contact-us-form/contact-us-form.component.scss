@@ -18,7 +18,17 @@
     color: #e2a3ce;
   }
 
-  ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
-    background-color: transparent !important;
+  p {
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 800px) {
+  h1 {
+    font-size: 60px !important;
+  }
+
+  .img-container {
+    background: transparent !important;
   }
 }

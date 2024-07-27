@@ -32,7 +32,7 @@
 
       &:hover,
       &.active {
-        color: #f66e5e;
+        color: var(--primary-color);
       }
 
       &::after,
@@ -43,7 +43,7 @@
         height: 2px;
         bottom: -10px;
         left: 0%;
-        background-color: #f66e5e;
+        background-color: var(--primary-color);
         transition: width 0.4s ease;
       }
 
@@ -84,7 +84,7 @@
   right: -3px;
   top: -15px;
 
-  background-color: #f66e5e;
+  background-color: var(--primary-color);
 }
 
 @media (max-width: 820px) {
@@ -123,7 +123,18 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
+  .mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+  }
+
+  .mat-mdc-icon-button {
+    padding: 0 !important;
+  }
+
   .space-between-tabs {
     margin: 0 2px !important;
   }
@@ -131,7 +142,7 @@
     span,
     .authentication_dropdown,
     button[routerLink="/cart"] {
-      font-size: 12px;
+      font-size: 11px;
     }
   }
 
@@ -139,6 +150,6 @@
     right: 6px;
     top: -15px;
 
-    background-color: #f66e5e;
+    background-color: var(--primary-color);
   }
 }

@@ -41,7 +41,7 @@ export const BasketReducer = createReducer(
       _id,
       items: [...items],
       totalPrice: total,
-      totalItemsCount: items.length,
+      totalItemsCount: getTotalCount(items),
     };
   }),
 
@@ -61,7 +61,7 @@ export const BasketReducer = createReducer(
       _id,
       items: [...items],
       totalPrice: total,
-      totalItemsCount: items.length,
+      totalItemsCount: getTotalCount(items),
     };
   }),
 
@@ -81,7 +81,7 @@ export const BasketReducer = createReducer(
       _id,
       items: [...items],
       totalPrice: total,
-      totalItemsCount: items.length,
+      totalItemsCount: getTotalCount(items),
     };
   }),
 
@@ -95,12 +95,17 @@ export const BasketReducer = createReducer(
   }),
 
   on(updateBasketSuccess, (state, { items, total }) => {
+    let count = 0;
+    items.forEach((item: any) => {
+      count += item.quantity;
+    });
+
     return {
       ...state,
       loading: false,
       items: [...items],
       totalPrice: total,
-      totalItemsCount: items.length,
+      totalItemsCount: getTotalCount(items),
     };
   }),
 
@@ -108,3 +113,7 @@ export const BasketReducer = createReducer(
     return { ...state, loading: false, error: action.error };
   })
 );
+
+export const getTotalCount = (items: any[]): number => {
+  return items.reduce((accumulator, item) => accumulator + item.quantity, 0);
+};

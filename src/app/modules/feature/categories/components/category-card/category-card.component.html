@@ -1,5 +1,5 @@
 <div class="row mx-0 category-card" [ngClass]="isOdd ? 'odd' : 'even'">
-  <div class="col-md-6">
+  <div class="col-lg-6">
     <h2>{{ category.title | titlecase }}</h2>
 
     <label class="subtitle mb-3"
@@ -13,11 +13,11 @@
       devices, and outright invention for conflict and setting.
     </p>
 
-    <label class="px-0 pb-1 underline-label" (click)="viewCategoryBooks()">
+    <label class="px-0 pb-1 underline-label mb-3" (click)="viewCategoryBooks()">
       View All Books
     </label>
   </div>
-  <div class="col-md-6 position-relative">
+  <div class="col-7 col-md-10 col-lg-6 position-relative text-center">
     <img [src]="category.imgSrc" class="img-fluid" />
 
     <img

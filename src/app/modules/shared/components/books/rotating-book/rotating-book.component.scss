@@ -20,10 +20,6 @@
     transform-origin: bottom;
   }
 
-  .img-fluid {
-    min-height: 100% !important;
-  }
-
   .rotate-before-image {
     position: absolute;
     left: 1px;
@@ -45,4 +41,10 @@
   opacity: 1;
   bottom: -7%;
   transform: rotateX(102deg) scale(0.45) rotateZ(-45deg);
+}
+
+@media (max-width: 800px) {
+  .smallBook {
+    height: 300px !important;
+  }
 }

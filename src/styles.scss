@@ -1,24 +1,8 @@
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
 @use "@angular/material" as mat;
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
 @include mat.core();
-
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
 $books-primary: mat.define-palette(mat.$indigo-palette);
 $books-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
 $books-warn: mat.define-palette(mat.$red-palette);
-
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
 $books-theme: mat.define-light-theme(
   (
     color: (
@@ -28,193 +12,22 @@ $books-theme: mat.define-light-theme(
     ),
   )
 );
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
 @include mat.all-component-themes($books-theme);
 
-/* You can add global styles to this file, and also import other style files */
+// COLORS THEMING
+:root {
+  --primary-color: #f66e5e;
+  --mint-color: #39baaf;
+  --light-primary-color: #f4ede7;
+  --light-mint-color: #dce8dd;
+  --light-orange-color: #eca68b;
+}
+
+// GLOBAL FILES STYLES
+@import "./assets/styles/elements.scss";
 @import "./assets/styles/fonts.scss";
 @import "./assets/styles/buttons.scss";
 @import "./assets/styles/forms.scss";
-
-html,
-body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: Quicksand;
-}
-
-h1 {
-  font-size: 67px;
-  font-family: Fanwood;
-}
-
-h2 {
-  font-size: 42px;
-  font-family: Fanwood;
-}
-
-h3 {
-  font-size: 32px;
-  font-family: Quicksand-Bold;
-}
-
-h4 {
-  font-size: 24px;
-}
-
-h6 {
-  color: rgba(0, 0, 0, 0.34);
-
-  font-size: 15px;
-  font-family: Fanwood;
-  font-weight: 900;
-
-  text-transform: uppercase;
-}
-
-p {
-  color: #7a7a7a;
-
-  line-height: 1.6rem;
-}
-
-a,
-.mat-icon {
-  cursor: pointer;
-}
-
-mat-label {
-  font-family: "Quicksand-SemiBold";
-  font-size: 14px;
-
-  color: #0f1f2c;
-}
-
-.mat-mdc-card-title {
-  font-family: "Quicksand-Bold" !important;
-  font-weight: 700 !important;
-
-  color: #7a7a7a;
-}
-
-.text-primary {
-  color: #f66e5e !important;
-}
-
-.family-lora {
-  font-family: "Lora" !important;
-}
-
-.underline-label {
-  position: relative;
-  cursor: pointer !important;
-  font-weight: 600;
-
-  transition: all 1s ease-in-out;
-
-  &::after {
-    position: absolute;
-    content: "";
-    bottom: -2px;
-    left: 0;
-    width: 50px;
-    border: 1px solid #f66e5e;
-
-    transition: all 0.6s ease-in-out;
-  }
-
-  &:hover {
-    color: #f66e5e !important;
-
-    &::after {
-      width: 100%;
-    }
-  }
-}
-
-.min-w-unset {
-  min-width: unset !important;
-}
-
-.p-carousel .p-carousel-indicators {
-  align-items: center;
-
-  .p-carousel-indicator button {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: transparent;
-    border: 2px solid #232323;
-
-    &::hover {
-      background-color: #232323;
-    }
-  }
-
-  .p-carousel-indicator.p-highlight button {
-    width: 15px;
-    height: 15px;
-
-    background-color: #f66e5e;
-    border: 2px solid #f66e5e;
-
-    &::hover {
-      background-color: #f66e5e;
-    }
-  }
-}
-
-.p-carousel .p-carousel-content .p-carousel-prev:enabled:hover {
-  background-color: transparent;
-}
-
-.p-icon {
-  width: 2rem;
-  height: 2rem;
-  color: #f66e5e;
-}
-
-.mh-vh-100 {
-  min-height: 100vh;
-}
-
-.mat-mdc-form-field-error {
-  font-size: 14px !important;
-  margin-top: 2px !important;
-}
-
-.bg-light-pink {
-  background-color: #f4ede7;
-}
-
-.bg-light-mint {
-  background-color: #dce8dd !important;
-}
-
-.bg-light {
-  background-color: #fafafa !important;
-}
-
-.mat-mdc-menu-content {
-  padding: 0 !important;
-
-  .mat-mdc-menu-item {
-    font-size: 15px;
-    font-weight: 800;
-
-    &:hover {
-      color: #f66e5e;
-      background-color: initial !important;
-    }
-  }
-}
-
-.mat-mdc-paginator{
-  background-color: transparent !important;
-}
+@import "./assets/styles/classes.scss";
+@import "./assets/styles/carousel.scss";
+@import "./assets/styles/custom-mat.scss";

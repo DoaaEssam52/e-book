@@ -5,3 +5,9 @@ h1 {
   font-size: 157px;
   font-weight: 500;
 }
+
+@media (max-width: 700px) {
+  h1 {
+    font-size: 80px;
+  }
+}

@@ -2,17 +2,22 @@
   <app-rotating-book
     [imgSrc]="imgSrc"
     (click)="viewDetails()"
+    [isSmallBook]="true"
   ></app-rotating-book>
 
-  <mat-card-title (click)="viewDetails()" class="text-center py-2">{{
-    book.name
-  }}</mat-card-title>
+  <mat-card-title
+    (click)="viewDetails()"
+    class="text-center pt-2 single-line-ellipsis"
+    >{{ book.name }}</mat-card-title
+  >
 
   <mat-card-content align="center">
-    <mat-card-subtitle class="my-2 text-primary"
+    <mat-card-subtitle class="my-1 text-primary"
       >${{ book.price }}</mat-card-subtitle
     >
 
-    <a (click)="addToCart()">Add To Cart</a>
+    <label (click)="addToCart()" class="anchor-with-underline-hover"
+      >Add To Cart</label
+    >
   </mat-card-content>
 </mat-card>

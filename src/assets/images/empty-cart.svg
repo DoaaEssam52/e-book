@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" style="enable-background:new 0 0 120 120;" xml:space="preserve" class="injected-svg js-svg-injector" data-parent="#iconEmptyCart">
 <style type="text/css">
 	.icon-66-0{fill:none;stroke:#212529;}
-	.icon-66-1{fill:#f66e5e;}
+	.icon-66-1{fill:var(--primary-color);}
 	.icon-66-2{fill:#FFFFFF;}
 	.icon-66-3{fill:#212529;}
 </style>

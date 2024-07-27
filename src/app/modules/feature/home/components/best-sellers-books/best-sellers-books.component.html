@@ -18,10 +18,10 @@
   </div>
 
   <div class="mt-5 row">
-    <div class="col-1 bg-light-pink"></div>
-    <div class="col-2 bg-transparent"></div>
+    <div class="col-0 col-lg-1 bg-light-pink"></div>
+    <div class="col-0 col-lg-2 bg-transparent"></div>
 
-    <div class="col-6 py-5 my-5 bg-light-mint">
+    <div class="col-lg-6 py-5 my-5 bg-light-mint">
       <p-carousel
         [value]="bestSellBooks"
         [numVisible]="1"
@@ -33,12 +33,14 @@
             <div class="d-flex justify-content-around align-items-center">
               <img [src]="book.imgSrc ?? ''" class="img-fluid" alt="" />
 
-              <div>
+              <div class="px-4">
                 <h2>{{ book.name }}</h2>
                 <mat-card-subtitle class="my-2 text-primary"
                   >${{ book.price }}</mat-card-subtitle
                 >
-                <label class="px-0 pb-1 underline-label">Add To Cart</label>
+                <label class="px-0 pb-1 anchor-with-underline-hover"
+                  >Add To Cart</label
+                >
               </div>
             </div>
           </mat-card>

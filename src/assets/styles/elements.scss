@@ -1,0 +1,66 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Quicksand;
+}
+
+h1 {
+  font-size: 67px;
+  font-family: Fanwood;
+}
+
+h2 {
+  font-size: 42px;
+  font-family: Fanwood;
+}
+
+h3 {
+  font-size: 32px;
+  font-family: Quicksand-Bold;
+}
+
+h4 {
+  font-size: 24px;
+}
+
+h6 {
+  color: rgba(0, 0, 0, 0.34);
+
+  font-size: 15px;
+  font-family: Fanwood;
+  font-weight: 900;
+
+  text-transform: uppercase;
+}
+
+p {
+  color: #7a7a7a;
+
+  line-height: 1.7rem;
+}
+
+a {
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 25px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  h4 {
+    font-size: 14px;
+  }
+}

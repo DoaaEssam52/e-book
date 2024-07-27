@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import {
   HttpRequest,
   HttpHandler,
@@ -8,13 +9,14 @@ import {
 import { Observable, catchError, throwError } from 'rxjs';
 
 import { Store } from '@ngrx/store';
-import { State } from '../store/models/state-model';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { environment } from '../../environments/environment';
-import { getUserDataRequest } from '../store/actions/auth-action';
 import { authSelector } from '../store/selectors/auth-selector';
+
+import { State } from '../store/models/state-model';
+
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class HttpInterceptor implements HttpInterceptor {

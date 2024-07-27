@@ -1,8 +1,8 @@
 .btn-primary {
   position: relative;
   color: white !important;
-  background-color: #f66e5e !important;
-  border: 1px solid #f66e5e !important;
+  background-color: var(--primary-color) !important;
+  border: 1px solid var(--primary-color) !important;
 }
 
 .btn-primary-hover {
@@ -15,14 +15,14 @@
 }
 
 .btn-outline-primary {
-  color: #f66e5e !important;
+  color: var(--primary-color) !important;
   background-color: transparent !important;
-  border: 2px solid #f66e5e !important;
+  border: 2px solid var(--primary-color) !important;
 
   transition: all 0.5s !important;
 
   &:hover {
-    background-color: #f66e5e !important;
+    background-color: var(--primary-color) !important;
     color: #fff !important;
   }
 }

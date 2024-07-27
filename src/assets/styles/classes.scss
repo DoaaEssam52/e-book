@@ -1,0 +1,100 @@
+.mh-vh-100 {
+  min-height: 100vh;
+}
+
+.bg-light-pink {
+  background-color: var(--light-primary-color);
+}
+
+.bg-light-mint {
+  background-color: var(--light-mint-color) !important;
+}
+
+.bg-light {
+  background-color: #fafafa !important;
+}
+
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.underline-label {
+  position: relative;
+  cursor: pointer !important;
+  font-weight: 600;
+
+  transition: all 1s ease-in-out;
+
+  &::after {
+    position: absolute;
+    content: "";
+    bottom: -2px;
+    left: 0;
+    width: 50px;
+    border: 1px solid var(--primary-color);
+
+    transition: all 0.6s ease-in-out;
+  }
+
+  &:hover {
+    color: var(--primary-color) !important;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+.anchor-with-underline-hover {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-family: Quicksand-Bold;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  color: #222 !important;
+
+  position: relative;
+  cursor: pointer !important;
+
+  transition: all 1s ease-in-out;
+
+  &::after {
+    position: absolute;
+    content: "";
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    border: 0px solid var(--primary-color);
+
+    transition: all 0.6s ease-in-out;
+  }
+
+  &:hover {
+    color: var(--primary-color) !important;
+
+    &::after {
+      border-width: 1px;
+      width: 100%;
+    }
+  }
+}
+
+.min-w-unset {
+  min-width: unset !important;
+}
+
+.single-line-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+@media (max-width: 800px) {
+  .mb-5 {
+    margin-bottom: 20px !important;
+  }
+}

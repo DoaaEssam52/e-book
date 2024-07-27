@@ -1,13 +1,16 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 
-import { BookService } from '../../../../../modules/shared/services/book.service';
+import { Store } from '@ngrx/store';
 
 import { Book } from '../../../../../modules/shared/models/book.model';
 import { State } from '../../../../../store/models/state-model';
-import { Subscription } from 'rxjs';
+
+import { incrementItemBasketRequest } from '../../../../../store/actions/basket-action';
+
+import { BookService } from '../../../../../modules/shared/services/book.service';
 
 @Component({
   selector: 'app-book-details',
@@ -16,6 +19,8 @@ import { Subscription } from 'rxjs';
 })
 export class BookDetailsComponent implements OnDestroy {
   book!: Book;
+
+  isLoadingData = true;
 
   routeSubscription!: Subscription;
   getBooksSubscription!: Subscription;
@@ -36,8 +41,21 @@ export class BookDetailsComponent implements OnDestroy {
     this.getBooksSubscription = this._books.getBookById(id).subscribe({
       next: (book) => {
         this.book = book;
+        this.isLoadingData = false;
+      },
+      error: (error) => {
+        this.isLoadingData = false;
       },
     });
+  }
+
+  addToCart(): void {
+    this.store.dispatch(
+      incrementItemBasketRequest({
+        book: this.book._id,
+        quantity: 1,
+      })
+    );
   }
 
   ngOnDestroy(): void {

@@ -7,4 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class RotatingBookComponent {
   @Input() imgSrc: string = '';
+  @Input() isSmallBook: boolean = true;
+
+  isLargeScreen = true;
 }

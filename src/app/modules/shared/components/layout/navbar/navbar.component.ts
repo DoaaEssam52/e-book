@@ -81,7 +81,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
             '/contact-us',
             '/details',
             '/categories',
-            'about-us',
+            '/about-us',
           ].some((path) => currentPath.includes(path));
 
           if (this.isBannerPage) {
@@ -104,7 +104,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   getTotalCartItems(): void {
     this.store.select(BasketSelector).subscribe({
-      next: ({ totalItemsCount }) => (this.totalCartItems = totalItemsCount),
+      next: ({ totalItemsCount }) => {
+        this.totalCartItems = totalItemsCount;
+      },
     });
   }
 
