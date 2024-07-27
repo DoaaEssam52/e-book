@@ -50,7 +50,7 @@
                   "maximumError": "2.5mb"
                 },
                 {
-                  "type": "allStyles",
+                  "type": "anyComponentStyle",
                   "maximumWarning": "1mb",
                   "maximumError": "1.5mb"
                 }
