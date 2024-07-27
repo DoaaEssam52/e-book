@@ -1,0 +1,46 @@
+.banner {
+  position: relative;
+
+  background: url("../../../../../../assets/images/categories_bg.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  color: white !important;
+
+  min-height: 65vh;
+
+  display: flex;
+  align-items: center;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  h1 {
+    font-size: 54px !important;
+    font-weight: 600 !important;
+    color: white !important;
+
+    position: relative;
+    z-index: 100;
+  }
+
+  h3 {
+    font-family: Euphoria-Script;
+    font-size: 50px;
+    font-weight: 600;
+
+    color: #000;
+
+    position: relative;
+    z-index: 100;
+  }
+}

@@ -1,0 +1,28 @@
+<div class="row mx-0 category-card" [ngClass]="isOdd ? 'odd' : 'even'">
+  <div class="col-md-6">
+    <h2>{{ category.title | titlecase }}</h2>
+
+    <label class="subtitle mb-3"
+      >When You Need Something with Your Coffee</label
+    >
+
+    <p>
+      It is generally accepted that, to be science fiction, a story must have
+      elements of science. Fantasy, on the other hand, rarely utilizes science,
+      relying instead on magic, mythological and neo-mythological beings and
+      devices, and outright invention for conflict and setting.
+    </p>
+
+    <label class="px-0 pb-1 underline-label" (click)="viewCategoryBooks()">
+      View All Books
+    </label>
+  </div>
+  <div class="col-md-6 position-relative">
+    <img [src]="category.imgSrc" class="img-fluid" />
+
+    <img
+      class="extension"
+      src="../../../../../../assets/images/leaf-separator.png"
+    />
+  </div>
+</div>

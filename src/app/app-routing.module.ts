@@ -21,9 +21,18 @@ const routes: Routes = [
       import('./modules/feature/books/books.module').then((m) => m.BooksModule),
   },
   {
-    path: 'cart',
+    path: 'categories',
     loadChildren: () =>
-      import('./modules/feature/cart/cart.module').then((m) => m.CartModule),
+      import('./modules/feature/categories/categories.module').then(
+        (m) => m.CategoriesModule
+      ),
+  },
+  {
+    path: 'about-us',
+    loadChildren: () =>
+      import('./modules/feature/about-us/about-us.module').then(
+        (m) => m.AboutUsModule
+      ),
   },
   {
     path: 'contact-us',
@@ -31,6 +40,11 @@ const routes: Routes = [
       import('./modules/feature/contact-us/contact-us.module').then(
         (m) => m.ContactUsModule
       ),
+  },
+  {
+    path: 'cart',
+    loadChildren: () =>
+      import('./modules/feature/cart/cart.module').then((m) => m.CartModule),
   },
 ];
 

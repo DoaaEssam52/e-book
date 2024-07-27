@@ -9,4 +9,5 @@ export interface Book {
   updatedAt: string;
   __v: number;
   _id: string;
+  imgSrc?: string;
 }

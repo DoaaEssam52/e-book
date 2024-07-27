@@ -1,8 +1,6 @@
 <app-books-banner></app-books-banner>
 
 <div class="p-5">
-  <!-- <mat-label>Home - Shop</mat-label> -->
-
   <div
     *ngIf="isLoading; else showBooks"
     class="d-flex justify-content-center align-items-center"
@@ -13,7 +11,10 @@
   <ng-template #showBooks>
     <div class="row mx-0">
       <div class="col-3">
-        <app-books-filter (filter)="filter($event)"></app-books-filter>
+        <app-books-filter
+          [categoryId]="categoryId"
+          (filter)="filter($event)"
+        ></app-books-filter>
       </div>
       <div class="col-9 row mx-0">
         <div
@@ -27,11 +28,14 @@
           <app-book-card
             *ngFor="
               let book of filteredBooks
-                | slice : pageIndex * pageSize : pageIndex * pageSize + pageSize
+                | slice
+                  : pageIndex * pageSize
+                  : pageIndex * pageSize + pageSize;
+              let i = index
             "
             class="col-md-3"
             [book]="book"
-            imgSrc="./../../../../assets/images/book1.jpg"
+            [imgSrc]="booksImages[i]"
           ></app-book-card>
         </ng-template>
       </div>

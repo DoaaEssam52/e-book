@@ -5,4 +5,5 @@ export interface Category {
   title: string;
   status: string;
   books: Book[];
+  imgSrc?: string;
 }

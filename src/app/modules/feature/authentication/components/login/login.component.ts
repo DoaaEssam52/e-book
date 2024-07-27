@@ -2,10 +2,6 @@ import { Component } from '@angular/core';
 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Router } from '@angular/router';
-
-import { MatSnackBar } from '@angular/material/snack-bar';
-
 import { Store } from '@ngrx/store';
 import { State } from '../../../../../store/models/state-model';
 
@@ -30,11 +26,7 @@ export class LoginComponent {
     ]),
   });
 
-  constructor(
-    private _snackBar: MatSnackBar,
-    private route: Router,
-    private store: Store<State>
-  ) {}
+  constructor(private store: Store<State>) {}
 
   submitLogin(): void {
     this.loginForm.markAllAsTouched();

@@ -1,0 +1,17 @@
+.empty-cart {
+  text-align: center;
+
+  &__title {
+    font-size: 1.75rem;
+  }
+
+  &__paragraph {
+    margin: auto;
+    width: 50%;
+
+    color: #77838f;
+    font-weight: 600;
+
+    line-height: 1.7rem;
+  }
+}

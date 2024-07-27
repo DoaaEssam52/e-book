@@ -17,6 +17,8 @@ import { getCategoriesRequest } from 'src/app/store/actions/categories-action';
 export class HomeComponent implements OnInit {
   randomBooks!: Book[];
 
+  booksImages: string[] = [];
+
   isLoadingBooks = true;
 
   constructor(private _store: Store<State>, private _books: BookService) {}
@@ -33,7 +35,16 @@ export class HomeComponent implements OnInit {
         const total = data.length;
         const limit = total > 3 ? 3 : total;
 
+        this.getRandomImagesToBooks();
+
         this.randomBooks = data.slice(0, limit);
+
+        this.randomBooks = this.randomBooks.map((book, index) => {
+          return {
+            ...book,
+            imgSrc: this.booksImages[index],
+          };
+        });
 
         setTimeout(() => {
           this.isLoadingBooks = false;
@@ -41,5 +52,9 @@ export class HomeComponent implements OnInit {
       },
       error: () => (this.isLoadingBooks = false),
     });
+  }
+
+  getRandomImagesToBooks(): void {
+    this.booksImages = this._books.getRandomImagesToBooks();
   }
 }

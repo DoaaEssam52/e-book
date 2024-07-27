@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
@@ -15,6 +15,8 @@ import { Category } from './../../../../../../modules/shared/models/category.mod
 })
 export class BooksFilterComponent implements OnInit {
   @Output() filter = new EventEmitter();
+
+  @Input() categoryId: string = '';
 
   minPrice = 0;
   maxPrice = 10000;
@@ -36,6 +38,16 @@ export class BooksFilterComponent implements OnInit {
     this._store.select(categoriesSelector).subscribe({
       next: ({ categories }) => (this.categories = categories),
     });
+
+    this.handleInitiallyFilterByCategory();
+  }
+
+  handleInitiallyFilterByCategory(): void {
+    if (this.categoryId) {
+      this.filterForm.patchValue({ category: this.categoryId });
+
+      this.submitFilter();
+    }
   }
 
   submitFilter(): void {

@@ -7,6 +7,12 @@ import {
   incrementItemBasketRequest,
   incrementItemBasketRequestFail,
   incrementItemBasketRequestSuccess,
+  removeItemFromBasketRequest,
+  removeItemFromBasketRequestFail,
+  removeItemFromBasketRequestSuccess,
+  updateBasket,
+  updateBasketFail,
+  updateBasketSuccess,
 } from '../actions/basket-action';
 
 import { BasketState } from '../models/basket-state-model';
@@ -16,7 +22,8 @@ const initialBasketState: BasketState = {
   error: '',
   _id: '',
   items: [],
-  total: 0,
+  totalPrice: 0,
+  totalItemsCount: 0,
 };
 
 export const BasketReducer = createReducer(
@@ -28,7 +35,14 @@ export const BasketReducer = createReducer(
   }),
 
   on(getMyBasketRequestSuccess, (state, { _id, items, total }) => {
-    return { ...state, loading: false, _id, items: [...items], total };
+    return {
+      ...state,
+      loading: false,
+      _id,
+      items: [...items],
+      totalPrice: total,
+      totalItemsCount: items.length,
+    };
   }),
 
   on(getMyBasketRequestFail, (state, action) => {
@@ -40,11 +54,57 @@ export const BasketReducer = createReducer(
     return { ...state, loading: true };
   }),
 
-  on(incrementItemBasketRequestSuccess, (state, { items, total }) => {
-    return { ...state, loading: false, items: [...items], total };
+  on(incrementItemBasketRequestSuccess, (state, { items, total, _id }) => {
+    return {
+      ...state,
+      loading: false,
+      _id,
+      items: [...items],
+      totalPrice: total,
+      totalItemsCount: items.length,
+    };
   }),
 
   on(incrementItemBasketRequestFail, (state, action) => {
+    return { ...state, loading: false, error: action.error };
+  }),
+
+  // REMOVE ITEM
+  on(removeItemFromBasketRequest, (state) => {
+    return { ...state, loading: true };
+  }),
+
+  on(removeItemFromBasketRequestSuccess, (state, { items, total, _id }) => {
+    return {
+      ...state,
+      loading: false,
+      _id,
+      items: [...items],
+      totalPrice: total,
+      totalItemsCount: items.length,
+    };
+  }),
+
+  on(removeItemFromBasketRequestFail, (state, action) => {
+    return { ...state, loading: false, error: action.error };
+  }),
+
+  // UPDATE BASKET ITEMS
+  on(updateBasket, (state) => {
+    return { ...state, loading: true };
+  }),
+
+  on(updateBasketSuccess, (state, { items, total }) => {
+    return {
+      ...state,
+      loading: false,
+      items: [...items],
+      totalPrice: total,
+      totalItemsCount: items.length,
+    };
+  }),
+
+  on(updateBasketFail, (state, action) => {
     return { ...state, loading: false, error: action.error };
   })
 );

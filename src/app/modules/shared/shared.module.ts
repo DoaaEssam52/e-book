@@ -18,6 +18,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatBadgeModule } from '@angular/material/badge';
 
 import {
   MAT_SNACK_BAR_DEFAULT_OPTIONS,
@@ -39,6 +40,7 @@ import { BookCardComponent } from './components/books/book-card/book-card.compon
 import { CartItemCounterComponent } from './components/cart/cart-item-counter/cart-item-counter.component';
 import { SpinnerComponent } from './components/layout/spinner/spinner.component';
 import { RotatingBookComponent } from './components/books/rotating-book/rotating-book.component';
+import { WisdomComponent } from './components/layout/wisdom/wisdom.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import { RotatingBookComponent } from './components/books/rotating-book/rotating
     SpinnerComponent,
     RotatingBookComponent,
     HandleActiveRouteDirective,
+    WisdomComponent,
   ],
   imports: [
     CommonModule,
@@ -74,6 +77,7 @@ import { RotatingBookComponent } from './components/books/rotating-book/rotating
     MatIconModule,
     MatMenuModule,
     MatDialogModule,
+    MatBadgeModule,
   ],
   exports: [
     ReactiveFormsModule,
@@ -95,6 +99,7 @@ import { RotatingBookComponent } from './components/books/rotating-book/rotating
     MatIconModule,
     MatMenuModule,
     MatDialogModule,
+    MatBadgeModule,
     ImgPathPipe,
     ErrorMessagesPipe,
     FilterByKeyPipe,
@@ -105,6 +110,7 @@ import { RotatingBookComponent } from './components/books/rotating-book/rotating
     CartItemCounterComponent,
     SpinnerComponent,
     RotatingBookComponent,
+    WisdomComponent,
   ],
   providers: [
     {

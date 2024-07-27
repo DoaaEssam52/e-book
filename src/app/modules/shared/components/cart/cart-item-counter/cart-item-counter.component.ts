@@ -1,12 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import { Store } from '@ngrx/store';
-
-import {
-  decrementItemBasketRequest,
-  incrementItemBasketRequest,
-} from '../../../../../store/actions/basket-action';
-
 @Component({
   selector: 'app-cart-item-counter',
   templateUrl: './cart-item-counter.component.html',
@@ -16,13 +9,12 @@ export class CartItemCounterComponent implements OnInit {
   @Output() itemPreSavedQuantity = new EventEmitter();
 
   @Input() cartItem: any;
+  @Input() isLoadingItemCount: boolean = false;
 
   count: number = 0;
 
   incrementCount = 0;
   decrementCount = 0;
-
-  constructor(private store: Store<{ cartItems: any }>) {}
 
   ngOnInit(): void {
     this.count = this.cartItem.quantity;
@@ -34,7 +26,10 @@ export class CartItemCounterComponent implements OnInit {
 
     this.count++;
 
-    this.itemPreSavedQuantity.emit(this.count);
+    this.itemPreSavedQuantity.emit({
+      book: this.cartItem._id,
+      quantity: this.count,
+    });
   }
 
   decrement(): void {
@@ -48,28 +43,4 @@ export class CartItemCounterComponent implements OnInit {
       quantity: this.count,
     });
   }
-
-  // saveToCart(): void {
-  //   const diffference = this.incrementCount - this.decrementCount;
-
-  //   if (diffference > 0) {
-
-  //     this.store.dispatch(
-  //       incrementItemBasketRequest({
-  //         book: this.cartItem._id,
-  //         quantity: this.incrementCount,
-  //       })
-  //     );
-  //   } else {
-  //     this.store.dispatch(
-  //       decrementItemBasketRequest({
-  //         book: this.cartItem._id,
-  //         quantity: this.decrementCount,
-  //       })
-  //     );
-  //   }
-
-  //   this.incrementCount = 0;
-  //   this.decrementCount = 0;
-  // }
 }

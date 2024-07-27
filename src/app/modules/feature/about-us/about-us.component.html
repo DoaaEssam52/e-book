@@ -1,0 +1,19 @@
+<div class="bg-light">
+  <app-navbar></app-navbar>
+  <app-about-us-banner></app-about-us-banner>
+
+  <div class="container pb-5">
+    <h1 class="text-center">Services</h1>
+    <div class="row mx-0">
+      <app-about-us-card
+        *ngFor="let card of cards"
+        class="col-md-3"
+        [imgSrc]="card.imgSrc"
+        [service]="card.service"
+        [type]="card.type"
+      ></app-about-us-card>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</div>

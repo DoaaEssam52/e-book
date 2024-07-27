@@ -5,9 +5,10 @@ import { CartRoutingModule } from './cart-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 
 import { CartComponent } from './cart.component';
+import { EmptyCartComponent } from './components/empty-cart/empty-cart.component';
 
 @NgModule({
-  declarations: [CartComponent],
+  declarations: [CartComponent, EmptyCartComponent],
   imports: [CommonModule, CartRoutingModule, SharedModule],
 })
 export class CartModule {}

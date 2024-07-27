@@ -1,19 +1,40 @@
 .btn-primary {
+  position: relative;
   color: white !important;
   background-color: #f66e5e !important;
   border: 1px solid #f66e5e !important;
+}
+
+.btn-primary-hover {
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 11px rgba(#f66e5e, 0.35);
+  }
 }
 
 .btn-outline-primary {
   color: #f66e5e !important;
   background-color: transparent !important;
   border: 2px solid #f66e5e !important;
+
+  transition: all 0.5s !important;
+
+  &:hover {
+    background-color: #f66e5e !important;
+    color: #fff !important;
+  }
 }
 
 .btn-rounded-x {
   border-radius: 30px !important;
 }
 
-.btn{
+.btn {
   font-weight: 700 !important;
+}
+
+.btn-lg {
+  font-size: 18px !important;
 }

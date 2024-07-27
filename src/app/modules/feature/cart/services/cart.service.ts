@@ -21,7 +21,6 @@ export class CartService {
   }
 
   updateBasket(data: any): Observable<UpdateBasketResponse> {
-    console.log('data', data);
     return this._httpClient.put<UpdateBasketResponse>(
       environment.updateBasket + '/' + data._id,
       { items: data.items }
@@ -35,14 +34,9 @@ export class CartService {
     );
   }
 
-  decrementItem(basketItem: BasketItem): Observable<UpdateBasketResponse> {
-    const options = {
-      body: basketItem,
-    };
-
+  removeItem(bookId: string): Observable<UpdateBasketResponse> {
     return this._httpClient.delete<UpdateBasketResponse>(
-      environment.decrementItem,
-      options
+      environment.decrementItem + '/' + bookId
     );
   }
 }

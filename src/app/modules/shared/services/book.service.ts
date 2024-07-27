@@ -1,17 +1,44 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Injectable, OnDestroy } from '@angular/core';
+
+import { HttpClient } from '@angular/common/http';
+import { Observable, Subscription } from 'rxjs';
+
+import { Store } from '@ngrx/store';
 
 import { Book } from '../models/book.model';
-
-import { environment } from 'src/environments/environment';
 import { GetAllBooks } from '../models/get-all-books.model';
+import { State } from '../../../store/models/state-model';
+
+import { booksSelector } from '../../../store/selectors/books-selector';
+
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
-export class BookService {
-  constructor(private _httpClient: HttpClient) {}
+export class BookService implements OnDestroy {
+  allBooksImages: string[] = [];
+
+  getAllBooksSubscription!: Subscription;
+
+  constructor(private _httpClient: HttpClient, private _store: Store<State>) {
+    this.getAllImages();
+  }
+
+  getAllImages(): void {
+    this.getAllBooksSubscription = this._store.select(booksSelector).subscribe({
+      next: ({ images }) => (this.allBooksImages = images),
+    });
+  }
+
+  getRandomImagesToBooks(): string[] {
+    return this.allBooksImages.map(
+      () =>
+        this.allBooksImages[
+          Math.floor(Math.random() * this.allBooksImages.length)
+        ]
+    );
+  }
 
   // HTTP Requests
   getAllBooks(): Observable<GetAllBooks> {
@@ -24,5 +51,9 @@ export class BookService {
 
   getBookById(bookId: string): Observable<Book> {
     return this._httpClient.get<Book>(`${environment.getBook}/${bookId}`);
+  }
+
+  ngOnDestroy(): void {
+    this.getAllBooksSubscription.unsubscribe();
   }
 }

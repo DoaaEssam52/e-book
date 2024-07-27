@@ -1,26 +1,21 @@
 <div class="my-5">
   <h2 class="mb-5 text-center">Explore Our Top Categories</h2>
 
-  <div class="w-75 mx-auto">
+  <div class="px-4 mx-auto">
     <p-carousel
       [value]="categories"
       [numVisible]="3"
       [numScroll]="3"
-      [showNavigators]="false"
+      [showNavigators]="true"
     >
       <ng-template pTemplate="category" let-category>
-        <mat-card class="bg-transparent border-0 mx-2" appearance="outlined">
-          <img
-            mat-card-image
-            [src]="
-              'https://subsolardesigns.com/leona/wp-content/uploads/2019/04/category_fantasy.jpg'
-            "
-            alt="Photo of a Shiba Inu"
-            class="img-fluid"
-          />
-          <mat-card-content align="center">
-            <p>{{ category.title }}</p>
-          </mat-card-content>
+        <mat-card
+          (click)="viewCategoryBooks(category)"
+          class="bg-transparent border-0 mx-2 position-relative"
+          appearance="outlined"
+        >
+          <img [src]="category.imgSrc" height="300px" />
+          <h4 class="text-center mt-3 title">{{ category.title }}</h4>
         </mat-card>
       </ng-template>
     </p-carousel>

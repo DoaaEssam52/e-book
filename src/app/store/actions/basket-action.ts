@@ -32,22 +32,6 @@ export const incrementItemBasketRequestFail = createAction(
   props<{ error: string }>()
 );
 
-// DECREMENT ITEM QUANTITY ACTIONS
-export const decrementItemBasketRequest = createAction(
-  'DECREMENT_CERTAIN_ITEM_IN_BASKET_REQUEST',
-  props<BasketItem>()
-);
-
-export const decrementItemBasketRequestSuccess = createAction(
-  'DECREMENT_CERTAIN_ITEM_IN_BASKET_REQUEST_SUCCESS',
-  props<UpdateBasketResponseData>()
-);
-
-export const decrementItemBasketRequestFail = createAction(
-  'DECREMENT_CERTAIN_ITEM_IN_BASKET_REQUEST_FAIL',
-  props<{ error: string }>()
-);
-
 // UPDATE BASKET ACTIONS
 export const updateBasket = createAction(
   'UPDATE_BASKET',
@@ -64,17 +48,18 @@ export const updateBasketFail = createAction(
   props<{ error: string }>()
 );
 
-// export const incrementItemCountToCart = createAction(
-//   'INCREMENT_ITEM_COUNT_TO_CART',
-//   props<{ cartItem: CartItem }>()
-// );
+// REMOVE ITEM ACTIONS
+export const removeItemFromBasketRequest = createAction(
+  'REMOVE_CERTAIN_ITEM_FROM_BASKET_REQUEST',
+  props<any>()
+);
 
-// export const decrementItemCountFromCart = createAction(
-//   'DECREMENT_ITEM_COUNT_FROM_CART',
-//   props<{ cartItem: CartItem }>()
-// );
+export const removeItemFromBasketRequestSuccess = createAction(
+  'REMOVE_CERTAIN_ITEM_FROM_BASKET_REQUEST_SUCCESS',
+  props<UpdateBasketResponseData>()
+);
 
-// export const removeItemFromCart = createAction(
-//   'REMOVE_ITEM_FROM_CART',
-//   props<{ cartItem: CartItem }>()
-// );
+export const removeItemFromBasketRequestFail = createAction(
+  'REMOVE_CERTAIN_ITEM_FROM_BASKET_REQUEST_FAIL',
+  props<{ error: string }>()
+);

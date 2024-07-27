@@ -31,17 +31,14 @@
         <ng-template pTemplate="book" let-book>
           <mat-card class="bg-transparent border-0 mx-2" appearance="outlined">
             <div class="d-flex justify-content-around align-items-center">
-              <app-rotating-book
-                class="px-4"
-                imgSrc="https://subsolardesigns.com/leona/wp-content/uploads/2019/04/back_home1-600x900.jpg"
-              ></app-rotating-book>
+              <img [src]="book.imgSrc ?? ''" class="img-fluid" alt="" />
 
               <div>
                 <h2>{{ book.name }}</h2>
                 <mat-card-subtitle class="my-2 text-primary"
                   >${{ book.price }}</mat-card-subtitle
                 >
-                <a>Add To Cart</a>
+                <label class="px-0 pb-1 underline-label">Add To Cart</label>
               </div>
             </div>
           </mat-card>

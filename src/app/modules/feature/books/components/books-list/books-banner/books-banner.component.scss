@@ -17,6 +17,8 @@
   h1 {
     position: relative;
 
+    font-size: 54px !important;
+
     &::after {
       position: absolute;
       content: "";

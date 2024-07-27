@@ -6,7 +6,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 
 import { Book } from '../../../models/book.model';
-import { incrementItemBasketRequest } from 'src/app/store/actions/basket-action';
+import { State } from '../../../../../store/models/state-model';
+
+import { incrementItemBasketRequest } from '../../../../../store/actions/basket-action';
+
+import { BasketSelector } from '../../../../../store/selectors/basket-selector';
 
 @Component({
   selector: 'app-book-card',
@@ -17,21 +21,18 @@ export class BookCardComponent {
   @Input() book!: Book;
   @Input() imgSrc!: string;
 
+  isEmptyCart: boolean = true;
+
   constructor(
-    private store: Store,
+    private store: Store<State>,
     private _snackBar: MatSnackBar,
     private _router: Router
   ) {}
 
   ngOnInit(): void {
-    document.querySelectorAll('.button').forEach((button) =>
-      button.addEventListener('click', (e) => {
-        if (!button.classList.contains('added')) {
-          button.classList.add('added');
-        }
-        e.preventDefault();
-      })
-    );
+    this.store.select(BasketSelector).subscribe({
+      next: ({ totalItemsCount }) => (this.isEmptyCart = totalItemsCount == 0),
+    });
   }
 
   viewDetails(): void {
@@ -42,12 +43,8 @@ export class BookCardComponent {
     this.store.dispatch(
       incrementItemBasketRequest({
         book: this.book._id,
-        quantity: 6,
+        quantity: 1,
       })
     );
-
-    this._snackBar.open('Item is added successfully to cart', 'close', {
-      duration: 3000,
-    });
   }
 }

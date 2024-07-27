@@ -1,40 +1,43 @@
-<mat-toolbar #navbar id="navbar" class="px-5 py-3 navbar">
-  <mat-toolbar-row class="px-0 justify-content-between">
-    <h2 class="navbar__logo">E-Book</h2>
+<mat-toolbar id="navbar" class="px-5 py-3 navbar">
+  <mat-toolbar-row class="px-0 row-container justify-content-between">
+    <h2 class="col-lg-3 col-xl-6 navbar__logo">E-Book</h2>
 
-    <div class="navbar__routes">
+    <div class="col-lg-9 col-xl-6 navbar__routes">
       <span
         *ngFor="let tab of navTabs"
         [routerLink]="[tab.routeTo]"
         [navigateTo]="tab.routeTo"
         [appHandleActiveRoute]="'active'"
-        class="mx-2 bg-transparent"
+        class="space-between-tabs bg-transparent"
       >
         {{ tab.title }}
       </span>
-      <!-- 
-      <span
-        routerLinkActive="underline-label"
-        routerLink="/cart"
-        class="px-0 min-w-unset mx-2"
-      >
-        <mat-icon>shopping_cart</mat-icon>
-      </span> -->
 
-      <span
-        routerLinkActive="underline-label"
-        class="px-0 min-w-unset mx-2"
-        (click)="openDialog()"
-      >
-        Logout
+      <div class="vertical_divider"></div>
 
-        <!-- <mat-icon
-          aria-hidden="false"
-          aria-label="logout icon"
-          fontIcon="logout"
-          [ariaSetSize]="50"
-        ></mat-icon> -->
-      </span>
+      <button
+        class="authentication_dropdown space-between-tabs"
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+      >
+        <mat-icon fontSet="material-icons-outlined">account_circle</mat-icon>
+        <mat-icon fontSet="material-icons-outlined">arrow_drop_down</mat-icon>
+      </button>
+
+      <mat-menu #menu="matMenu">
+        <button (click)="login()" mat-menu-item *ngIf="!isLoggedInUser">
+          Login
+        </button>
+        <button (click)="openDialog()" mat-menu-item *ngIf="isLoggedInUser">
+          Logout
+        </button>
+      </mat-menu>
+
+      <button routerLink="/cart" class="space-between-tabs" mat-icon-button>
+        <span [matBadge]="totalCartItems">
+          <mat-icon fontSet="material-icons-outlined">shopping_cart</mat-icon>
+        </span>
+      </button>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
@@ -45,13 +48,13 @@
 
     <div class="d-flex justify-content-end">
       <button
-        class="px-5 mx-2 btn btn-outline-primary rounded"
+        class="px-5 space-between-tabs btn btn-outline-primary rounded mx-1"
         (click)="logout()"
       >
         Logout
       </button>
 
-      <button mat-dialog-close class="px-3 btn btn-primary rounded">
+      <button mat-dialog-close class="px-4 btn btn-primary rounded mx-1">
         Cancel
       </button>
     </div>

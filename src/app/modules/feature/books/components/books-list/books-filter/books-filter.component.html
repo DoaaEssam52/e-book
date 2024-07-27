@@ -20,11 +20,11 @@
       <div class="row justify-content-between mt-2">
         <div class="col-6 form-group">
           <mat-label>Min Price</mat-label>
-          <input class="form-control" formControlName="minPrice" />
+          <input type="number" class="form-control" formControlName="minPrice" />
         </div>
         <div class="col-6 form-group">
           <mat-label>Max Price</mat-label>
-          <input class="form-control" formControlName="maxPrice" />
+          <input type="number" class="form-control" formControlName="maxPrice" />
         </div>
       </div>
     </mat-expansion-panel>
@@ -60,6 +60,7 @@
         class="mt-2"
         formControlName="category"
         placeholder="Choose category"
+        [disabled]="categoryId ? true : false"
       >
         <mat-option
           *ngFor="let category of categories"

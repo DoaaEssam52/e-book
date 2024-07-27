@@ -1,11 +1,10 @@
-// import { CartItem } from 'src/app/modules/shared/models/cart-item.model';
-
 import { CategoryState } from './category-state-model';
 import { AuthState } from './auth-state-model';
-import { GetMyBasket } from './getMyBasket-model';
+import { BasketState } from './basket-state-model';
 
 export interface State {
   authData: AuthState;
-  basketData: GetMyBasket;
+  basketData: BasketState;
   categoriesData: CategoryState;
+  booksData: any;
 }

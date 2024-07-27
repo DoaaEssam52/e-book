@@ -20,6 +20,10 @@
     transform-origin: bottom;
   }
 
+  .img-fluid {
+    min-height: 100% !important;
+  }
+
   .rotate-before-image {
     position: absolute;
     left: 1px;

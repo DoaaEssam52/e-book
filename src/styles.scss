@@ -113,6 +113,10 @@ mat-label {
 
 .underline-label {
   position: relative;
+  cursor: pointer !important;
+  font-weight: 600;
+
+  transition: all 1s ease-in-out;
 
   &::after {
     position: absolute;
@@ -121,6 +125,16 @@ mat-label {
     left: 0;
     width: 50px;
     border: 1px solid #f66e5e;
+
+    transition: all 0.6s ease-in-out;
+  }
+
+  &:hover {
+    color: #f66e5e !important;
+
+    &::after {
+      width: 100%;
+    }
   }
 }
 
@@ -156,6 +170,16 @@ mat-label {
   }
 }
 
+.p-carousel .p-carousel-content .p-carousel-prev:enabled:hover {
+  background-color: transparent;
+}
+
+.p-icon {
+  width: 2rem;
+  height: 2rem;
+  color: #f66e5e;
+}
+
 .mh-vh-100 {
   min-height: 100vh;
 }
@@ -173,6 +197,24 @@ mat-label {
   background-color: #dce8dd !important;
 }
 
-.bg-light{
+.bg-light {
   background-color: #fafafa !important;
+}
+
+.mat-mdc-menu-content {
+  padding: 0 !important;
+
+  .mat-mdc-menu-item {
+    font-size: 15px;
+    font-weight: 800;
+
+    &:hover {
+      color: #f66e5e;
+      background-color: initial !important;
+    }
+  }
+}
+
+.mat-mdc-paginator{
+  background-color: transparent !important;
 }

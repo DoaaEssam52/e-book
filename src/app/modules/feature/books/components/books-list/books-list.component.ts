@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { ActivatedRoute } from '@angular/router';
 
 import { BooksFilteration } from '../../models/filteration-model';
 import { Book } from '../../../../../modules/shared/models/book.model';
@@ -18,6 +20,8 @@ export class BooksListComponent implements OnInit {
 
   filteration!: BooksFilteration;
 
+  categoryId = '';
+
   pageIndex = 0;
   pageSize = 8;
   length!: number;
@@ -25,13 +29,27 @@ export class BooksListComponent implements OnInit {
   books: Book[] = [];
   filteredBooks: Book[] = [];
 
+  booksImages: string[] = [];
+
   priceRangePipe = new PriceRangePipe();
   filterByKeyPipe = new FilterByKeyPipe();
 
-  constructor(private _books: BookService) {}
+  constructor(private _books: BookService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.getBooks();
+
+    this.handleInitiallyFilterByCategory();
+  }
+
+  getRandomImagesToBooks(): void {
+    this.booksImages = this._books.getRandomImagesToBooks();
+  }
+
+  handleInitiallyFilterByCategory(): void {
+    this.route.queryParams.subscribe((params) => {
+      this.categoryId = params['category'] || null;
+    });
   }
 
   getBooks(): void {
@@ -42,6 +60,7 @@ export class BooksListComponent implements OnInit {
 
           this.books = data;
           this.filteredBooks = data;
+          this.getRandomImagesToBooks();
 
           this.isLoading = false;
         });

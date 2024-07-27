@@ -11,6 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { CategoriesReducer } from './store/reducers/categories-reducer';
 import { AuthReducer } from './store/reducers/auth-reducer';
 import { BasketReducer } from './store/reducers/basket-reducer';
+import { BooksReducer } from './store/reducers/books-reducer';
 
 import { CategoriesEffects } from './store/effects/categories-effects';
 import { AuthEffects } from './store/effects/auth-effects';
@@ -33,6 +34,7 @@ import { AppComponent } from './app.component';
         categoriesData: CategoriesReducer,
         authData: AuthReducer,
         basketData: BasketReducer,
+        booksData: BooksReducer
       },
       {}
     ),
