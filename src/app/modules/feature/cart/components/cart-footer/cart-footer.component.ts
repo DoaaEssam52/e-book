@@ -17,7 +17,7 @@ import { Subscription } from 'rxjs';
 import { BasketSelector } from '../../../../../store/selectors/basket-selector';
 
 import { State } from '../../../../../store/models/state-model';
-import { updateBasket } from 'src/app/store/actions/basket-action';
+import { updateBasket } from '../../../../../store/actions/basket-action';
 
 @Component({
   selector: 'app-cart-footer',
