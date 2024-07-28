@@ -64,6 +64,8 @@ export class ResetPasswordComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     //Unsubscribe from all subscriptions to prevent memory leaks
-    this.resetPasswrodSubscription.unsubscribe();
+    if (this.resetPasswrodSubscription) {
+      this.resetPasswrodSubscription.unsubscribe();
+    }
   }
 }

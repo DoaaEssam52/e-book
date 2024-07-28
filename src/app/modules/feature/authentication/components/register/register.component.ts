@@ -80,6 +80,8 @@ export class RegisterComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     //Unsubscribe from all subscriptions to prevent memory leaks
-    this.registerSubscription.unsubscribe();
+    if (this.registerSubscription) {
+      this.registerSubscription.unsubscribe();
+    }
   }
 }

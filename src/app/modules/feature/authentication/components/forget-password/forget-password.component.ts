@@ -43,6 +43,8 @@ export class ForgetPasswordComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     //Unsubscribe from all subscriptions to prevent memory leaks
-    this.forgetPasswordSubscription.unsubscribe();
+    if (this.forgetPasswordSubscription) {
+      this.forgetPasswordSubscription.unsubscribe();
+    }
   }
 }
