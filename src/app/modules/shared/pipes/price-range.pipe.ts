@@ -7,14 +7,16 @@ import { Book } from '../models/book.model';
 })
 export class PriceRangePipe implements PipeTransform {
   transform(books: Book[], minPrice: number, maxPrice: number): Book[] {
+    if (maxPrice === 0) {
+      return [];
+    }
+
     if (minPrice) {
       books = [...books.filter((book: Book) => book.price >= minPrice)];
     }
 
     if (maxPrice) {
       books = [...books.filter((book: Book) => book.price <= maxPrice)];
-    } else {
-      return [];
     }
 
     return books;

@@ -18,7 +18,8 @@ import { FilterByKeyPipe } from '../../../../shared/pipes/filter-by-key.pipe';
   styleUrls: ['./books-list.component.scss'],
 })
 export class BooksListComponent implements OnInit, OnDestroy {
-  isLoading = true;
+  isLoadingBooks = true;
+  isLoadingPage = true;
 
   filteration!: BooksFilteration;
 
@@ -43,8 +44,6 @@ export class BooksListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getBooks();
-
-    this.handleInitiallyFilterByCategory();
   }
 
   getRandomImagesToBooks(): void {
@@ -60,17 +59,21 @@ export class BooksListComponent implements OnInit, OnDestroy {
   getBooks(): void {
     this.getBooksSubscription = this._books.getAllBooks().subscribe({
       next: ({ data }) => {
-        setTimeout(() => {
-          this.length = data.length;
+        this.length = data.length;
 
-          this.books = data;
-          this.filteredBooks = data;
-          this.getRandomImagesToBooks();
+        this.books = data;
+        this.filteredBooks = data;
+        this.getRandomImagesToBooks();
 
-          this.isLoading = false;
-        });
+        this.handleInitiallyFilterByCategory();
+
+        this.isLoadingPage = false;
+        this.isLoadingBooks = false;
       },
-      error: () => (this.isLoading = false),
+      error: () => {
+        this.isLoadingPage = false;
+        this.isLoadingBooks = false;
+      },
     });
   }
 
@@ -81,7 +84,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
     author,
     category,
   }: BooksFilteration): void {
-    this.isLoading = true;
+    this.isLoadingBooks = true;
 
     this.filteredBooks = [...this.books];
     this.filteration = { name, minPrice, maxPrice, author, category };
@@ -121,7 +124,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
     this.length = this.filteredBooks.length;
 
     setTimeout(() => {
-      this.isLoading = false;
+      this.isLoadingBooks = false;
     }, 1000);
   }
 
