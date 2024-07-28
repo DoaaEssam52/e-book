@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
+
+import { Subscription } from 'rxjs';
 
 import { BooksFilteration } from '../../models/filteration-model';
 import { Book } from '../../../../../modules/shared/models/book.model';
 
 import { BookService } from '../../../../../modules/shared/services/book.service';
 
-import { PriceRangePipe } from '../../pipes/price-range.pipe';
+import { PriceRangePipe } from '../../../../shared/pipes/price-range.pipe';
 import { FilterByKeyPipe } from '../../../../shared/pipes/filter-by-key.pipe';
 
 @Component({
@@ -15,7 +17,7 @@ import { FilterByKeyPipe } from '../../../../shared/pipes/filter-by-key.pipe';
   templateUrl: './books-list.component.html',
   styleUrls: ['./books-list.component.scss'],
 })
-export class BooksListComponent implements OnInit {
+export class BooksListComponent implements OnInit, OnDestroy {
   isLoading = true;
 
   filteration!: BooksFilteration;
@@ -34,6 +36,9 @@ export class BooksListComponent implements OnInit {
   priceRangePipe = new PriceRangePipe();
   filterByKeyPipe = new FilterByKeyPipe();
 
+  routeSubscription!: Subscription;
+  getBooksSubscription!: Subscription;
+
   constructor(private _books: BookService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -47,13 +52,13 @@ export class BooksListComponent implements OnInit {
   }
 
   handleInitiallyFilterByCategory(): void {
-    this.route.queryParams.subscribe((params) => {
+    this.routeSubscription = this.route.queryParams.subscribe((params) => {
       this.categoryId = params['category'] || null;
     });
   }
 
   getBooks(): void {
-    this._books.getAllBooks().subscribe({
+    this.getBooksSubscription = this._books.getAllBooks().subscribe({
       next: ({ data }) => {
         setTimeout(() => {
           this.length = data.length;
@@ -115,10 +120,18 @@ export class BooksListComponent implements OnInit {
 
     this.length = this.filteredBooks.length;
 
-    this.isLoading = false;
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 1000);
   }
 
   getPageIndex(e: number) {
     this.pageIndex = e;
+  }
+
+  ngOnDestroy(): void {
+    //Unsubscribe from all subscriptions to prevent memory leaks
+    this.routeSubscription.unsubscribe();
+    this.getBooksSubscription.unsubscribe();
   }
 }

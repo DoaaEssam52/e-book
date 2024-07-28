@@ -38,8 +38,10 @@
                 <mat-card-subtitle class="my-2 text-primary"
                   >${{ book.price }}</mat-card-subtitle
                 >
-                <label class="px-0 pb-1 anchor-with-underline-hover"
-                  >Add To Cart</label
+                <label
+                  class="px-0 pb-1 anchor-with-underline-hover"
+                  (click)="viewDetails(book._id)"
+                  >View Book</label
                 >
               </div>
             </div>

@@ -1,0 +1,37 @@
+<div
+  class="row mx-0 justify-content-between align-items-center cart-collaterals"
+>
+  <div class="col-md-6">
+    <h3 [routerLink]="'/shop'" class="text-primary back-button">
+      <mat-icon class="back-icon">arrow_back</mat-icon>
+      Back to shop
+    </h3>
+  </div>
+  <div class="col-md-6">
+    <h5>Total Price</h5>
+
+    <table cellspacing="0" class="shop_table">
+      <tbody>
+        <tr class="order-total">
+          <th>Price</th>
+          <td data-title="Total">
+            <span class="product-subtotal"><span>£</span>{{ totalPrice }}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="d-flex justify-content-end">
+      <button
+        (click)="checkout()"
+        class="px-5 py-2 btn btn-primary btn-primary-hover btn-rounded-x"
+      >
+        Checkout
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #successCheckoutModal>
+  <app-checkout-success (closeModal)="closeModal()"></app-checkout-success>
+</ng-template>

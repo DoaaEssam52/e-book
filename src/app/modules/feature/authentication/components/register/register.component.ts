@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+import { Subscription } from 'rxjs';
 
 import { Router } from '@angular/router';
 
@@ -20,7 +22,11 @@ import { Validations } from '../../../../shared/validations/validations';
     './register.component.scss',
   ],
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnDestroy {
+  passwordVisible = false;
+
+  registerSubscription!: Subscription;
+
   registerForm = new FormGroup({
     first_name: new FormControl('', [
       Validators.required,
@@ -38,7 +44,7 @@ export class RegisterComponent {
       Validators.minLength(Validations.password.minLength),
       Validators.pattern(Validations.password.pattern),
     ]),
-    role: new FormControl('', Validators.required),
+    // role: new FormControl('', Validators.required),
   });
 
   constructor(
@@ -47,22 +53,33 @@ export class RegisterComponent {
     private route: Router
   ) {}
 
+  togglePasswordVisibility(): void {
+    this.passwordVisible = !this.passwordVisible;
+  }
+
   submitRegister(): void {
     this.registerForm.markAllAsTouched();
 
     if (this.registerForm.valid) {
-      this._auth.register(this.registerForm.value as Register).subscribe({
-        next: () => {
-          this._snackBar.open(
-            'You have successfully created a new account',
-            'close',
-            {
-              duration: 3000,
-            }
-          ),
-            this.route.navigateByUrl('home');
-        },
-      });
+      this.registerSubscription = this._auth
+        .register(this.registerForm.value as Register)
+        .subscribe({
+          next: () => {
+            this._snackBar.open(
+              'You have successfully created a new account',
+              'close',
+              {
+                duration: 3000,
+              }
+            ),
+              this.route.navigateByUrl('/auth/login');
+          },
+        });
     }
+  }
+
+  ngOnDestroy(): void {
+    //Unsubscribe from all subscriptions to prevent memory leaks
+    this.registerSubscription.unsubscribe();
   }
 }

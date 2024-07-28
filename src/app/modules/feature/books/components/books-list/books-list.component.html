@@ -1,22 +1,23 @@
 <app-books-banner></app-books-banner>
 
 <div class="p-5">
-  <div
-    *ngIf="isLoading; else showBooks"
-    class="d-flex justify-content-center align-items-center"
-  >
-    <mat-spinner></mat-spinner>
-  </div>
+  <div class="row mx-0">
+    <div class="col-lg-3 mb-5">
+      <app-books-filter
+        [categoryId]="categoryId"
+        (filter)="filter($event)"
+      ></app-books-filter>
+    </div>
 
-  <ng-template #showBooks>
-    <div class="row mx-0">
-      <div class="col-lg-3 mb-5">
-        <app-books-filter
-          [categoryId]="categoryId"
-          (filter)="filter($event)"
-        ></app-books-filter>
+    <div class="col-lg-9 row mx-0">
+      <div
+        *ngIf="isLoading; else showBooks"
+        class="d-flex justify-content-center align-items-center"
+      >
+        <mat-spinner [diameter]="50"></mat-spinner>
       </div>
-      <div class="col-lg-9 row mx-0">
+
+      <ng-template #showBooks>
         <div
           *ngIf="!length; else booksList"
           class="d-flex justify-content-center align-items-center"
@@ -38,14 +39,14 @@
             [imgSrc]="booksImages[i]"
           ></app-book-card>
         </ng-template>
-      </div>
+      </ng-template>
     </div>
+  </div>
 
-    <app-books-list-pagination
-      *ngIf="filteredBooks.length"
-      [length]="length"
-      [pageSize]="pageSize"
-      (pageIndexEmitter)="getPageIndex($event)"
-    ></app-books-list-pagination>
-  </ng-template>
+  <app-books-list-pagination
+    *ngIf="filteredBooks.length"
+    [length]="length"
+    [pageSize]="pageSize"
+    (pageIndexEmitter)="getPageIndex($event)"
+  ></app-books-list-pagination>
 </div>

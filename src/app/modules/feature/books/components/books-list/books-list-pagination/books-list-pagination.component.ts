@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 
 import { PageEvent } from '@angular/material/paginator';
 
@@ -7,8 +14,9 @@ import { PageEvent } from '@angular/material/paginator';
   templateUrl: './books-list-pagination.component.html',
   styleUrls: ['./books-list-pagination.component.scss'],
 })
-export class BooksListPaginationComponent implements OnInit {
+export class BooksListPaginationComponent implements OnInit, OnDestroy {
   @Output() pageIndexEmitter = new EventEmitter();
+
   @Input() length!: number;
   @Input() pageSize!: number;
 
@@ -26,5 +34,9 @@ export class BooksListPaginationComponent implements OnInit {
     this.pageIndex = e.pageIndex;
 
     this.pageIndexEmitter.emit(this.pageIndex);
+  }
+
+  ngOnDestroy(): void {
+    this.pageIndexEmitter.unsubscribe();
   }
 }

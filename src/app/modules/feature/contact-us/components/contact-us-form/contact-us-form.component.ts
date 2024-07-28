@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Validations } from './../../../../shared/validations/validations';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { Validations } from './../../../../shared/validations/validations';
 
 @Component({
   selector: 'app-contact-us-form',

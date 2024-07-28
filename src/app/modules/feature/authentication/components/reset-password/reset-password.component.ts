@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Router } from '@angular/router';
+
+import { Subscription } from 'rxjs';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -16,10 +18,13 @@ import { ResetPassword } from '../../models/reset-password-model';
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
   styleUrls: [
-    './../../authentication.component.scss','./reset-password.component.scss',
+    './../../authentication.component.scss',
+    './reset-password.component.scss',
   ],
 })
-export class ResetPasswordComponent {
+export class ResetPasswordComponent implements OnDestroy {
+  resetPasswrodSubscription!: Subscription;
+
   resetPasswordForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     otp: new FormControl('', [
@@ -43,7 +48,7 @@ export class ResetPasswordComponent {
     this.resetPasswordForm.markAllAsTouched();
 
     if (this.resetPasswordForm.valid) {
-      this._auth
+      this.resetPasswrodSubscription = this._auth
         .resetPassword(this.resetPasswordForm.value as ResetPassword)
         .subscribe({
           next: () => {
@@ -55,5 +60,10 @@ export class ResetPasswordComponent {
           },
         });
     }
+  }
+
+  ngOnDestroy(): void {
+    //Unsubscribe from all subscriptions to prevent memory leaks
+    this.resetPasswrodSubscription.unsubscribe();
   }
 }

@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+
 import { HttpClient } from '@angular/common/http';
+
 import { Observable } from 'rxjs';
 
 import { Login } from '../models/login-model';
@@ -30,7 +32,7 @@ export class AuthService {
   register(form: Register): Observable<RegisterResponse> {
     return this._httpClient.post<RegisterResponse>(
       `${environment.authBaseUrl}/${environment.register}`,
-      form
+      { ...form, role: 'Customer' }
     );
   }
 

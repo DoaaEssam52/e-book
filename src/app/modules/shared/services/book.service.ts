@@ -54,6 +54,7 @@ export class BookService implements OnDestroy {
   }
 
   ngOnDestroy(): void {
+    //Unsubscribe from all subscriptions to prevent memory leaks
     this.getAllBooksSubscription.unsubscribe();
   }
 }

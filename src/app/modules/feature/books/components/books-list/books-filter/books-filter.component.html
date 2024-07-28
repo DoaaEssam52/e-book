@@ -20,7 +20,14 @@
       <div class="row justify-content-between mt-2">
         <div class="col-6 form-group">
           <mat-label>Min Price</mat-label>
-          <input matInput type="number" formControlName="minPrice" />
+          <input
+            matInput
+            type="number"
+            class="form-control"
+            formControlName="minPrice"
+            min="0"
+            (keypress)="preventNegativeNumbers($event)"
+          />
         </div>
         <div class="col-6 form-group">
           <mat-label>Max Price</mat-label>
@@ -28,6 +35,8 @@
             type="number"
             class="form-control"
             formControlName="maxPrice"
+            min="0"
+            (keypress)="preventNegativeNumbers($event)"
           />
         </div>
       </div>

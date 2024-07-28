@@ -1,0 +1,9 @@
+.space-between-tabs {
+  margin: 0 8px;
+}
+
+@media (max-width: 450px) {
+  .space-between-tabs {
+    margin: 0 2px !important;
+  }
+}

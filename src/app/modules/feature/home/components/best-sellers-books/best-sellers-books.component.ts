@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 
+import { Router } from '@angular/router';
+
 import { Book } from '../../../../../modules/shared/models/book.model';
 
 @Component({
@@ -9,4 +11,10 @@ import { Book } from '../../../../../modules/shared/models/book.model';
 })
 export class BestSellersBooksComponent {
   @Input() bestSellBooks!: Book[];
+
+  constructor(private _router: Router) {}
+
+  viewDetails(id: string): void {
+    this._router.navigateByUrl('shop/' + id + '/details');
+  }
 }

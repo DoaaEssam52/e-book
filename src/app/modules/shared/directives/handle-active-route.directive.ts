@@ -49,6 +49,7 @@ export class HandleActiveRouteDirective implements OnDestroy {
   }
 
   ngOnDestroy(): void {
+    //Unsubscribe from all subscriptions to prevent memory leaks
     this.routerEventsSubscription.unsubscribe();
   }
 }

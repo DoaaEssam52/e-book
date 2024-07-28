@@ -30,7 +30,11 @@
         matInput
         placeholder="Enter your password"
         formControlName="password"
+        [type]="passwordVisible ? 'text' : 'password'"
       />
+      <mat-icon matSuffix (click)="togglePasswordVisibility()">{{
+        passwordVisible ? "visibility_off" : "visibility"
+      }}</mat-icon>
     </mat-form-field>
 
     <ng-container
@@ -44,8 +48,7 @@
         <mat-error *ngSwitchCase="'minlength'"
           >Password should be at least 4 characters</mat-error
         >
-        <mat-error
-          *ngSwitchCase="'pattern'"
+        <mat-error *ngSwitchCase="'pattern'"
           >Password should contain at least 1 lowercase 1 uppercase 1 number and
           1 special character</mat-error
         >

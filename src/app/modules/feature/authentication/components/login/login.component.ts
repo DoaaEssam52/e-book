@@ -3,10 +3,12 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
+
 import { State } from '../../../../../store/models/state-model';
 
-import { Validations } from '../../../../shared/validations/validations';
 import { getUserDataRequest } from 'src/app/store/actions/auth-action';
+
+import { Validations } from '../../../../shared/validations/validations';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +19,8 @@ import { getUserDataRequest } from 'src/app/store/actions/auth-action';
   ],
 })
 export class LoginComponent {
+  passwordVisible = false;
+
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
@@ -27,6 +31,10 @@ export class LoginComponent {
   });
 
   constructor(private store: Store<State>) {}
+
+  togglePasswordVisibility(): void {
+    this.passwordVisible = !this.passwordVisible;
+  }
 
   submitLogin(): void {
     this.loginForm.markAllAsTouched();

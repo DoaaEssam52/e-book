@@ -25,15 +25,26 @@
       </button>
 
       <mat-menu #menu="matMenu">
-        <button (click)="login()" mat-menu-item *ngIf="!isLoggedInUser">
+        <button
+          (click)="login()"
+          mat-menu-item
+          *ngIf="!isLoggedInUser; else logoutOption"
+        >
           Login
         </button>
-        <button (click)="openDialog()" mat-menu-item *ngIf="isLoggedInUser">
-          Logout
-        </button>
+        <ng-template #logoutOption>
+          <button (click)="openDialog()" mat-menu-item *ngIf="isLoggedInUser">
+            Logout
+          </button>
+        </ng-template>
       </mat-menu>
 
-      <button routerLink="/cart" class="space-between-tabs" mat-icon-button>
+      <button
+        *ngIf="isLoggedInUser"
+        routerLink="/cart"
+        class="space-between-tabs"
+        mat-icon-button
+      >
         <span [matBadge]="totalCartItems">
           <mat-icon fontSet="material-icons-outlined">shopping_cart</mat-icon>
         </span>
@@ -43,20 +54,5 @@
 </mat-toolbar>
 
 <ng-template #logoutModal>
-  <div class="px-5 py-4">
-    <h4 class="mb-5">Are you sure you want to logout?</h4>
-
-    <div class="d-flex justify-content-end">
-      <button
-        class="px-5 space-between-tabs btn btn-outline-primary rounded mx-1"
-        (click)="logout()"
-      >
-        Logout
-      </button>
-
-      <button mat-dialog-close class="px-4 btn btn-primary rounded mx-1">
-        Cancel
-      </button>
-    </div>
-  </div>
+  <app-logout-modal (closeModal)="closeModal($event)"></app-logout-modal>
 </ng-template>

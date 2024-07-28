@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { Book } from '../../../shared/models/book.model';
+import { Book } from '../models/book.model';
 
 @Pipe({
   name: 'priceRange',
@@ -13,6 +13,8 @@ export class PriceRangePipe implements PipeTransform {
 
     if (maxPrice) {
       books = [...books.filter((book: Book) => book.price <= maxPrice)];
+    } else {
+      return [];
     }
 
     return books;

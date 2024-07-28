@@ -1,156 +1,22 @@
 <div
   class="bg-light mh-vh-100 d-flex justify-content-center align-items-center"
-  #cart
 >
   <div *ngIf="isLoadingInitialPage; else loadedCart">
     <mat-spinner [diameter]="50"></mat-spinner>
   </div>
 
   <ng-template #loadedCart>
-    <div
-      *ngIf="cartItems.length; else emptyCart"
-      class="px-2 px-sm-5 woocommerce"
-    >
-      <h1 class="my-4">Cart</h1>
-
-      <div class="woocommerce-notices-wrapper"></div>
-      <form
-        class="woocommerce-cart-form position-relative"
-        action="https://subsolardesigns.com/leona/cart/"
-        method="post"
-      >
-        <table
-          class="shop_table shop_table_responsive cart woocommerce-cart-form__contents"
-          cellspacing="0"
-        >
-          <thead>
-            <tr>
-              <th class="product-remove">&nbsp;</th>
-              <th class="product-thumbnail">&nbsp;</th>
-              <th class="product-name">Product</th>
-              <th class="product-price">Price</th>
-              <th class="product-quantity">Quantity</th>
-              <th class="product-subtotal">Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              class="woocommerce-cart-form__cart-item cart_item"
-              *ngFor="let cartItem of cartItems"
-            >
-              <td class="product-remove">
-                <mat-icon (click)="removeItem(cartItem)" class="text-primary"
-                  >close</mat-icon
-                >
-              </td>
-
-              <td class="product-thumbnail">
-                <a
-                  ><img
-                    src="https://subsolardesigns.com/leona/wp-content/uploads/2019/04/fairy_journey1-600x900.jpg"
-                    class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                    alt=""
-                /></a>
-              </td>
-
-              <td data-title="Product">
-                <h5 class="product-name">
-                  {{ cartItem.name }}
-                </h5>
-              </td>
-
-              <td class="product-price" data-title="Price">
-                <span class="woocommerce-Price-amount amount"
-                  ><span class="woocommerce-Price-currencySymbol">£</span
-                  >{{ cartItem.price }}</span
-                >
-              </td>
-
-              <td class="product-quantity" data-title="Quantity">
-                <app-cart-item-counter
-                  [isLoadingItemCount]="isLoadingUpdate"
-                  [cartItem]="cartItem"
-                  (itemPreSavedQuantity)="updatePreSavedQuantity($event)"
-                ></app-cart-item-counter>
-              </td>
-
-              <td class="product-subtotal" data-title="Total">
-                <span
-                  *ngIf="!isLoadingUpdate; else loadingItemCount"
-                  class="woocommerce-Price-amount amount"
-                  ><span class="woocommerce-Price-currencySymbol">£</span
-                  >{{ cartItem.price * cartItem.quantity }}</span
-                >
-
-                <ng-template #loadingItemCount>
-                  <mat-spinner [diameter]="30"></mat-spinner>
-                </ng-template>
-              </td>
-            </tr>
-
-            <tr>
-              <td colspan="6" class="actions text-end">
-                <button
-                  type="button"
-                  class="btn btn-outline-primary btn-rounded-x"
-                  (click)="updateCart()"
-                >
-                  Update cart
-                </button>
-
-                <input
-                  type="hidden"
-                  id="woocommerce-cart-nonce"
-                  name="woocommerce-cart-nonce"
-                  value="2d79301836"
-                /><input
-                  type="hidden"
-                  name="_wp_http_referer"
-                  value="/leona/cart/"
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div *ngIf="isLoadingDelete" class="delete-spinner">
-          <mat-spinner [diameter]="30"></mat-spinner>
-        </div>
-      </form>
-
-      <div
-        class="row mx-0 justify-content-between align-items-center cart-collaterals"
-      >
-        <div class="col-md-6">
-          <h3 [routerLink]="'/shop'" class="text-primary back-button">
-            <mat-icon class="back-icon">arrow_back</mat-icon>
-            Back to shop
-          </h3>
-        </div>
-        <div class="col-md-6 cart_totals">
-          <h5>Total Price</h5>
-
-          <table cellspacing="0" class="shop_table shop_table_responsive">
-            <tbody>
-              <tr class="order-total">
-                <th>Price</th>
-                <td data-title="Total">
-                  <strong
-                    ><span class="woocommerce-Price-amount amount"
-                      ><span class="woocommerce-Price-currencySymbol">£</span
-                      >{{ totalPrice }}</span
-                    ></strong
-                  >
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+    <div *ngIf="isEmptyCart; else cart">
+      <app-empty-cart></app-empty-cart>
     </div>
 
-    <ng-template #emptyCart>
-      <app-empty-cart></app-empty-cart>
+    <ng-template #cart>
+      <div class="px-2 px-sm-5 woocommerce">
+        <app-cart-details></app-cart-details>
+        <app-cart-footer
+          [orderId]="orderId"
+        ></app-cart-footer>
+      </div>
     </ng-template>
   </ng-template>
 </div>

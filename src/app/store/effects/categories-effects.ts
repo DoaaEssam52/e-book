@@ -11,6 +11,8 @@ import { catchError, map, of, switchMap } from 'rxjs';
 
 import { BookService } from '../../modules/shared/services/book.service';
 
+import { Category } from '../../modules/shared/models/category.model';
+
 @Injectable()
 export class CategoriesEffects {
   images: string[] = [
@@ -31,7 +33,7 @@ export class CategoriesEffects {
       switchMap(() => {
         return this._books.getAllCategories().pipe(
           map((res) => {
-            const categories = res.map((category: any, index: number) => {
+            const categories = res.map((category: Category, index: number) => {
               return {
                 ...category,
                 imgSrc: this.images[index % this.images.length],

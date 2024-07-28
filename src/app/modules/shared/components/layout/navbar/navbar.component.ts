@@ -4,6 +4,7 @@ import {
   Renderer2,
   ViewChild,
   OnInit,
+  TemplateRef,
 } from '@angular/core';
 
 import { Router } from '@angular/router';
@@ -16,8 +17,9 @@ import { Store } from '@ngrx/store';
 
 import { State } from '../../../../../store/models/state-model';
 
-import { clearUserTokenAndData } from '../../../../..//store/actions/auth-action';
-import { BasketSelector } from 'src/app/store/selectors/basket-selector';
+import { clearUserTokenAndData } from '../../../../../store/actions/auth-action';
+
+import { BasketSelector } from '../../../../../store/selectors/basket-selector';
 
 @Component({
   selector: 'app-navbar',
@@ -25,7 +27,7 @@ import { BasketSelector } from 'src/app/store/selectors/basket-selector';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit, OnDestroy {
-  @ViewChild('logoutModal') logoutModal: any;
+  @ViewChild('logoutModal') logoutModal!: TemplateRef<any>;
 
   isBannerPage = true;
   isLoggedInUser = false;
@@ -36,6 +38,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   private routerEventsSubscription!: Subscription;
   private scrollEventListener!: () => void;
+  getItemsSubscription!: Subscription;
 
   navTabs = [
     { title: 'Home', routeTo: '/home' },
@@ -103,7 +106,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   getTotalCartItems(): void {
-    this.store.select(BasketSelector).subscribe({
+    this.getItemsSubscription = this.store.select(BasketSelector).subscribe({
       next: ({ totalItemsCount }) => {
         this.totalCartItems = totalItemsCount;
       },
@@ -149,9 +152,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.dialog.open(this.logoutModal);
   }
 
-  logout(): void {
-    this.store.dispatch(clearUserTokenAndData());
-
+  closeModal(e: any): void {
     this.dialog.closeAll();
   }
 
@@ -163,6 +164,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     if (this.scrollEventListener) {
       this.scrollEventListener();
+    }
+
+    if (this.getItemsSubscription) {
+      this.getItemsSubscription.unsubscribe();
     }
   }
 }

@@ -33,14 +33,16 @@ export class CartItemCounterComponent implements OnInit {
   }
 
   decrement(): void {
-    this.decrementCount = this.decrementCount + 1;
-    this.incrementCount--;
+    if (this.count > 1) {
+      this.decrementCount = this.decrementCount + 1;
+      this.incrementCount--;
 
-    this.count--;
+      this.count--;
 
-    this.itemPreSavedQuantity.emit({
-      book: this.cartItem._id,
-      quantity: this.count,
-    });
+      this.itemPreSavedQuantity.emit({
+        book: this.cartItem._id,
+        quantity: this.count,
+      });
+    }
   }
 }

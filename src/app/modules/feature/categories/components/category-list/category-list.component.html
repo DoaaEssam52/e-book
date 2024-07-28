@@ -1,13 +1,24 @@
-<div class="bg-light">
-  <app-navbar></app-navbar>
-
-  <app-category-banner></app-category-banner>
-
-  <div class="container py-5">
-    <category-card
-      *ngFor="let category of categories; let i = index"
-      [category]="category"
-      [isOdd]="i % 2 != 0"
-    ></category-card>
-  </div>
+<div
+  *ngIf="isLoading; else showCategories"
+  class="mh-vh-100 d-flex justify-content-center align-items-center"
+>
+  <mat-spinner [diameter]="50"></mat-spinner>
 </div>
+
+<ng-template #showCategories>
+  <div class="bg-light">
+    <app-navbar></app-navbar>
+
+    <app-category-banner></app-category-banner>
+
+    <div class="container py-5">
+      <category-card
+        *ngFor="let category of categories; let i = index"
+        [category]="category"
+        [isOdd]="i % 2 != 0"
+      ></category-card>
+    </div>
+
+    <app-footer></app-footer>
+  </div>
+</ng-template>

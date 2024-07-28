@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -31,6 +31,7 @@ import { ButtonModule } from 'primeng/button'; // Import ButtonModule if you nee
 import { ImgPathPipe } from './pipes/img-path.pipe';
 import { ErrorMessagesPipe } from './pipes/error-messages.pipe';
 import { FilterByKeyPipe } from './pipes/filter-by-key.pipe';
+import { PriceRangePipe } from './pipes/price-range.pipe';
 
 import { HandleActiveRouteDirective } from './directives/handle-active-route.directive';
 import { ScreenSizeDirective } from './directives/screen-size.directive';
@@ -42,12 +43,14 @@ import { CartItemCounterComponent } from './components/cart/cart-item-counter/ca
 import { SpinnerComponent } from './components/layout/spinner/spinner.component';
 import { RotatingBookComponent } from './components/books/rotating-book/rotating-book.component';
 import { WisdomComponent } from './components/layout/wisdom/wisdom.component';
+import { LogoutModalComponent } from './components/layout/navbar/components/logout-modal/logout-modal.component';
 
 @NgModule({
   declarations: [
     ImgPathPipe,
     ErrorMessagesPipe,
     FilterByKeyPipe,
+    PriceRangePipe,
     NavbarComponent,
     FooterComponent,
     BookCardComponent,
@@ -57,9 +60,11 @@ import { WisdomComponent } from './components/layout/wisdom/wisdom.component';
     HandleActiveRouteDirective,
     WisdomComponent,
     ScreenSizeDirective,
+    LogoutModalComponent,
   ],
   imports: [
     CommonModule,
+    FormsModule,
     ReactiveFormsModule,
     RouterModule,
     MatGridListModule,
@@ -82,6 +87,7 @@ import { WisdomComponent } from './components/layout/wisdom/wisdom.component';
     MatBadgeModule,
   ],
   exports: [
+    FormsModule,
     ReactiveFormsModule,
     RouterModule,
     MatGridListModule,
@@ -105,6 +111,7 @@ import { WisdomComponent } from './components/layout/wisdom/wisdom.component';
     ImgPathPipe,
     ErrorMessagesPipe,
     FilterByKeyPipe,
+    PriceRangePipe,
     HandleActiveRouteDirective,
     ScreenSizeDirective,
     NavbarComponent,
