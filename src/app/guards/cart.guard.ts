@@ -2,9 +2,9 @@ import { inject } from '@angular/core';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { CanActivateChildFn, Router } from '@angular/router';
+import { CanActivateFn, Router } from '@angular/router';
 
-export const canActivateChildNotAuthGuard: CanActivateChildFn = () => {
+export const cartGuard: CanActivateFn = () => {
   const router = inject(Router);
   const matSnackBar = inject(MatSnackBar);
 

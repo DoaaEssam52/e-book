@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { canActivateChildNotAuthGuard } from './guards/child-not-auth.guard';
+import { authGuard } from './guards/auth.guard';
+import { cartGuard } from './guards/cart.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -11,6 +12,7 @@ const routes: Routes = [
       import('./modules/feature/authentication/authentication.module').then(
         (m) => m.AuthenticationModule
       ),
+    canActivate: [authGuard],
   },
   {
     path: 'home',
@@ -47,7 +49,7 @@ const routes: Routes = [
     path: 'cart',
     loadChildren: () =>
       import('./modules/feature/cart/cart.module').then((m) => m.CartModule),
-    canActivateChild: [canActivateChildNotAuthGuard],
+    canActivate: [cartGuard],
   },
   { path: '**', redirectTo: 'home' },
 ];

@@ -2,10 +2,9 @@ import { inject } from '@angular/core';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { CanActivateFn, Router } from '@angular/router';
+import { CanActivateFn } from '@angular/router';
 
-export const canActivateAuthGuard: CanActivateFn = () => {
-  const router = inject(Router);
+export const notAuthGuard: CanActivateFn = () => {
   const matSnackBar = inject(MatSnackBar);
 
   const token = localStorage.getItem('token');

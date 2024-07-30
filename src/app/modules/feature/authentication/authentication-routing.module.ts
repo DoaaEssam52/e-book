@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { canActivateChildAuthGuard } from '../../../guards/child-auth.guard';
 
 import { AuthenticaionComponent } from './authenticaion.component';
 import { LoginComponent } from './components/login/login.component';
@@ -13,7 +12,6 @@ const routes: Routes = [
   {
     path: '',
     component: AuthenticaionComponent,
-    canActivateChild: [canActivateChildAuthGuard],
     children: [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
